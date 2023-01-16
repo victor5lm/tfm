@@ -2,6 +2,7 @@ library(gtsummary)
 library(tidyverse)
 library(ggplot2)
 library(gtsummary)
+library(dplyr)
 
 metadata_study_cohort <- read.csv("DATA/metadata_study_cohort.csv")
 
