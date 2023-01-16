@@ -33,7 +33,7 @@ table
 
 # Validation cohort: population summary
 metadata_validation_cohort <- read.csv("DATA/metadata_validation_cohort.csv")
-trial_val <- metadata_ai4food_v1 %>% select("Sex","HbA1c (%)","HbA1c_IFCC (mmol/mol)","Glucose (mg/dl)","C-reactive protein (mg/dl)",`HOMA-IR`,"Adiponectin (ug/ml)","group_HEI") %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
+trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI (kg/m²)`,`HbA1c (%)`,`HbA1c_IFCC (mmol/mol)`,`Glucose (mg/dl)`,`C-reactive protein (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
 table_val <- 
     tbl_summary(
         trial_val,
@@ -77,8 +77,8 @@ table_val <-
     modify_table_styling(
         columns = label,
         rows = label %in% "Adiponectin (\u03BCg/ml)",
-        footnote = "<u>Legend</u>:<br><5: Unusual values<br>
-        \u22655: Abnormal values",
+        footnote = "<u>Legend</u>:<br><5: Abnormal values<br>
+        \u22655: Normal values",
         text_format = "bold") %>%
     modify_caption("**Summary statistics**")
 
