@@ -75,8 +75,11 @@ abunda_clr_pheatmap$Sample <- NULL
 abunda_clr_pheatmap_matrix <- as.matrix(abunda_clr_pheatmap)
 
 p2 = ComplexHeatmap::HeatmapAnnotation(Importance = anno_barplot(a_imp_ordered$Overall, gp = gpar(fill=ifelse(a_imp_ordered$`groups_imp$groups_imp`==0,"#073444","#bae9fa"))), height = unit(3, "cm"), HPF_Group=groups_for_pheatmap_genuses$Group,col=list(HPF_Group=c("Low HPF consumption"="#073444","High HPF consumption"="#bae9fa")),annotation_name_gp = gpar(fontsize = 10, fontface = "bold"), annotation_legend_param = list(title="", labels_gp = gpar(font=2, fontsize = 12)), border = TRUE, gap = unit(1, "mm"))
+
 p3 = ComplexHeatmap::rowAnnotation(HPF_Group=groups_for_pheatmap$Group,col=list(HPF_Group=c("Low HPF consumption"="#073444","High HPF consumption"="#bae9fa")),annotation_name_gp = gpar(fontsize = 10, fontface = "bold"), annotation_legend_param = list(title="", labels_gp = gpar(font=2, fontsize = 12)), border = TRUE, show_legend = FALSE, show_annotation_name = FALSE)
+
 heatmap_pheatmat <- ComplexHeatmap::Heatmap(abunda_clr_pheatmap_matrix, cluster_rows = FALSE, top_annotation = p2, right_annotation = p3, col = rev(RColorBrewer::brewer.pal(name = "RdYlBu", n = 9)), cluster_columns = FALSE, show_row_names = FALSE, heatmap_legend_param = list(title="", legend_height = unit(4,"cm"), labels_gp = gpar(font=2), legend_direction = "vertical"), column_names_gp = grid::gpar(fontsize = 10.5, fontface = "bold.italic"), rect_gp = gpar(col = "#073444", lwd = 1), row_split = groups_for_pheatmap$Group, row_gap = unit(2, "mm"), row_title_gp = gpar(col = c("white","white")), column_split = a_imp_ordered$`groups_imp$groups_imp`, column_title_gp = gpar(col = c("white","white")), column_gap = unit(2, "mm"))
+
 draw(heatmap_pheatmat,heatmap_legend_side = "left", annotation_legend_side = "bottom")
 
 # Heatmap for the 20 most important microbial taxa identified by the best ML model trained after the HEI classification of the study cohort
