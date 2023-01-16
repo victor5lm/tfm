@@ -1,3 +1,5 @@
+library(tidyr)
+
 [...]
 
 processed_tb_clr <- tb_clr[!grepl("uncultured",tb_clr$Genus),]
