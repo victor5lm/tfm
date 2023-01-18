@@ -33,7 +33,7 @@ table
 
 # Validation cohort: population summary
 metadata_validation_cohort <- read.csv("DATA/metadata_validation_cohort.csv")
-trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI`,`HbA1c (%)`,`HbA1c IFCC (mmol/mol)`,`Glucose (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`,`HEI classification`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
+trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI`,`HbA1c (%)`,`HOMA-IR`,`Adiponectin (ug/ml)`,`HEI classification`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
 table_val <- 
     tbl_summary(
         trial_val,
@@ -48,18 +48,6 @@ table_val <-
         rows = label %in% "HbA1c (%)",
         footnote = "<u>Legend</u>:<br><5.7: Normal values<br>
         5.7 to 6.4: Prediabetes",
-        text_format = "bold") %>% 
-    modify_table_styling(
-        columns = label,
-        rows = label %in% "HbA1c_IFCC (mmol/mol)",
-        footnote = "<u>Legend</u>:<br>\u226438: Normal values<br>
-        39 to 47: Prediabetes",
-        text_format = "bold") %>% 
-    modify_table_styling(
-        columns = label,
-        rows = label %in% "Glucose (mg/dl)",
-        footnote = "<u>Legend</u>:<br>\u226499: Normal values<br>
-        100 to 125: Prediabetes",
         text_format = "bold") %>% 
     modify_table_styling(
         columns = label,
