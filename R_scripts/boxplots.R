@@ -39,3 +39,18 @@ ggplot(data = tabla_prueba_hei, aes(x = `HEI group`, y = Abundance, label = Samp
     theme(
         plot.title = element_text(color = "#0099f8", size = 18, face = "bold", hjust = 0.5),
         plot.subtitle = element_text(face = "bold.italic", hjust = 0.5), strip.text = element_text(face="bold.italic", size=10), axis.title.x = element_text(size=12, face="bold", colour = "black"), axis.title.y = element_text(size=12, face="bold", colour = "black"), axis.text.x = element_text(size=10, face="bold", colour = "black"), axis.text.y = element_text(size=10, face="bold", colour = "black"), legend.title = element_text(size=11, face="bold", colour = "white"), legend.text = element_text(face="bold"), legend.position = "bottom")        
+
+# Boxplot of some microbial genera whose abundances are significantly different between HEI consumption groups (Validation cohort)
+
+tabla_prueba_hei<-tb_clr[tb_clr$Genus %in% c("CAG-115", "Lachnospira"), ] #tb_clr is the object obtained after using psmelt on the phyloseq object.
+set.seed(2019)
+ggplot(data = tabla_prueba_hei, aes(x = `HEI group`, y = Abundance, label = SampleID, group = `HEI group`, fill = `HEI group`)) +
+    geom_boxplot() +
+    labs(x = "Group", y = "Abundance\n") +
+    facet_wrap(~ Genus, scales = "free") + 
+    stat_summary(fun = "mean", geom = "point", aes(shape = "Mean"), size = 2, color = "gold", show.legend = TRUE) +
+    geom_signif(comparisons = list(c("Good HEI", "Poor HEI")),
+                test = "wilcox.test", map_signif_level = TRUE, textsize = 5, fontface = "bold", vjust = 0.5)+ scale_fill_brewer(palette="Paired")+geom_point(color = "grey")+
+    theme(
+        plot.title = element_text(color = "#0099f8", size = 18, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(face = "bold.italic", hjust = 0.5), strip.text = element_text(face="bold.italic", size=10), axis.title.x = element_text(size=12, face="bold", colour = "black"), axis.title.y = element_text(size=12, face="bold", colour = "black"), axis.text.x = element_text(size=10, face="bold", colour = "black"), axis.text.y = element_text(size=10, face="bold", colour = "black"), legend.title = element_text(size=11, face="bold", colour = "white"), legend.text = element_text(face="bold"), legend.position = "bottom")
