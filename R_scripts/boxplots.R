@@ -1,3 +1,7 @@
+library(ggplot2)
+library(ggrepel)
+library(ggsignif)
+
 # Boxplot of some microbial genera whose abundances are significantly different between HPF consumption groups (Study cohort)
 
 tabla_prueba<-tb_clr[tb_clr$Genus %in% c(" Moryella", " Muribaculaceae", " Phocea", " Prevotellaceae NK3B31 group"), ] #tb_clr is the object obtained after using psmelt on the phyloseq object.
