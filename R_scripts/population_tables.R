@@ -7,7 +7,7 @@ library(dplyr)
 metadata_study_cohort <- read.csv("DATA/metadata_study_cohort.csv")
 
 # Study cohort: population summary
-trial <- datos_ias %>% select(`Age`, `Sex`, `BMI`, `Physical activity`, `Wine consumption`, `Beer consumption`, `Liquor consumption`, `Tobacco consumption`, `HEI classification`, `Highly processed food consumption`)
+trial <- datos_ias %>% select(`Age`, `Sex`, `BMI`, `Physical activity`, `HEI classification`, `Highly processed food consumption`)
 table <- 
     tbl_summary(
         trial,
@@ -33,7 +33,7 @@ table
 
 # Validation cohort: population summary
 metadata_validation_cohort <- read.csv("DATA/metadata_validation_cohort.csv")
-trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI`,`HbA1c (%)`,`HbA1c IFCC (mmol/mol)`,`Glucose (mg/dl)`,`C-reactive protein (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`,`HEI classification`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
+trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI`,`HbA1c (%)`,`HbA1c IFCC (mmol/mol)`,`Glucose (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`,`HEI classification`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
 table_val <- 
     tbl_summary(
         trial_val,
@@ -60,12 +60,6 @@ table_val <-
         rows = label %in% "Glucose (mg/dl)",
         footnote = "<u>Legend</u>:<br>\u226499: Normal values<br>
         100 to 125: Prediabetes",
-        text_format = "bold") %>% 
-    modify_table_styling(
-        columns = label,
-        rows = label %in% "C-reactive protein (mg/dl)",
-        footnote = "<u>Legend</u>:<br><1: Normal values<br>
-        \u22651: Abnormal values",
         text_format = "bold") %>% 
     modify_table_styling(
         columns = label,
