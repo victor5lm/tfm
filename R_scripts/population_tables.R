@@ -7,10 +7,10 @@ library(dplyr)
 metadata_study_cohort <- read.csv("DATA/metadata_study_cohort.csv")
 
 # Study cohort: population summary
-trial <- metadata_study_cohort %>% select(`Age`, `Sex`, `HEI (type)`, `BMI`, `Physical activity`, `Wine consumption`, `Beer consumption`, `Liquor consumption`, `Tobacco consumption`)
+trial <- datos_ias %>% select(`Age`, `Sex`, `BMI`, `Physical activity`, `Wine consumption`, `Beer consumption`, `Liquor consumption`, `Tobacco consumption`, `HEI classification`, `Highly processed food consumption`)
 table <- 
     tbl_summary(
-        trial2,
+        trial,
         missing = "no" # don't list missing data separately
     )%>%
     add_n() %>% # add column with total number of non-missing observations
