@@ -33,7 +33,7 @@ table
 
 # Validation cohort: population summary
 metadata_validation_cohort <- read.csv("DATA/metadata_validation_cohort.csv")
-trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI (kg/m²)`,`HbA1c (%)`,`HbA1c_IFCC (mmol/mol)`,`Glucose (mg/dl)`,`C-reactive protein (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
+trial_val <- metadata_validation_cohort %>% select(`Age`,`Sex`,`BMI`,`HbA1c (%)`,`HbA1c IFCC (mmol/mol)`,`Glucose (mg/dl)`,`C-reactive protein (mg/dl)`,`HOMA-IR`,`Adiponectin (ug/ml)`,`HEI classification`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653")))
 table_val <- 
     tbl_summary(
         trial_val,
