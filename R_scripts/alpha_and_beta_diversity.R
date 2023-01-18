@@ -223,7 +223,7 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
     return(plist)
 }
 
-dist_methods <- unlist(distanceMethodList)[8]
+dist_methods <- unlist(distanceMethodList)[2]
 dist_methods
 
 # to do this individually for each study:
@@ -371,7 +371,7 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
                   legend.text = element_text(size = 12, face = "bold"))
         
         p <- p + ggtitle(i) 
-        p <- p + scale_colour_brewer(type="qual", palette="Set1")
+        p <- p + scale_colour_brewer(type="qual", palette="Dark2")
         
         plist[[i]] <- p
     }
