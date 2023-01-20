@@ -78,6 +78,7 @@ table <- tbl_summary(trial,by = cohort,missing = "no")%>%
     modify_header(label ~ "**Variable**")
 
 table
+
 # TABLA 2: HPF
 
 trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`Physical activity`,`Wine consumption`,`Beer consumption`,`Liquor consumption`,`Tobacco consumption`, `Highly processed food consumption`) %>% mutate(`Physical activity` = factor(`Physical activity`, levels = c("High", "Moderate", "Low")))
@@ -99,3 +100,6 @@ table <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "n
         text_format = "bold")
 
 table
+
+# TABLA 3: HEI
+
