@@ -114,3 +114,25 @@ colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_popul
 colnames(full_data_population_tables)[17] <- "HbA1c (%)"
 colnames(full_data_population_tables)[19] <- "HOMA-IR"
 colnames(full_data_population_tables)[21] <- "Adiponectin (ug/ml)"
+
+trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`HbA1c (%)`, `HOMA-IR`, `Adiponectin (ug/ml)`, `HEI classification`, `cohort`, `HEI group`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653"))) %>% mutate(`Adiponectin (ug/ml)` = factor(`Adiponectin (ug/ml)`, levels = c("<5","\u22655"))) %>% mutate(`HbA1c (%)` = factor(`HbA1c (%)`, levels = c("<5.7","5.7 to 6.4"))) %>% mutate(`HEI classification` = factor(`HEI classification`, levels = c("Excellent","Very good","Good","Acceptable","Inappropriate")))
+table <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_summary(by = `HEI group`, missing = "no", label = "Adiponectin (ug/ml)" ~ "Adiponectin (\u03BCg/ml)"), .header = "**{strata}**, N = {n}") %>% bold_labels() %>% modify_header(stat_1_1 = "**Good HEI (\u2265 61)**, N = 34", stat_1_2 = "**Good HEI (\u2265 61)**, N = 24") %>% modify_table_styling(
+    columns = label,
+    rows = label %in% "HbA1c (%)",
+    footnote = "<u>Legend</u>:<br><5.7: Normal values<br>
+        5.7 to 6.4: Prediabetes",
+    text_format = "bold") %>% 
+    modify_table_styling(
+        columns = label,
+        rows = label %in% "HOMA-IR",
+        footnote = "<u>Legend</u>:<br><1.96: Normal values<br>
+        1.96 to 2.99: There might be insulin resistance<br>
+        \u22653: Insulin resistance",
+        text_format = "bold") %>% 
+    modify_table_styling(
+        columns = label,
+        rows = label %in% "Adiponectin (\u03BCg/ml)",
+        footnote = "<u>Legend</u>:<br><5: Abnormal values<br>
+        \u22655: Normal values",
+        text_format = "bold")
+table
