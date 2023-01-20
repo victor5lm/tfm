@@ -74,7 +74,7 @@ table_val
 full_data_population_tables <- read.csv("DATA/full_data_population_tables.csv") #full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
 
 colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_population_tables))
-trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `HEI classification`, `HEI group`, `cohort`)
+trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `cohort`)
 table <- tbl_summary(trial,by = cohort,missing = "no")%>%
     bold_labels() %>%
     modify_header(label ~ "**Variable**")
