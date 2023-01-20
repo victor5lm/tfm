@@ -71,7 +71,9 @@ table_val
 
 # TABLA 1: COSAS COMUNES
 
-#full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
+full_data_population_tables <- read.csv("DATA/full_data_population_tables.csv") #full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
+
+colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_population_tables))
 trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `HEI classification`, `HEI group`, `cohort`)
 table <- tbl_summary(trial,by = cohort,missing = "no")%>%
     bold_labels() %>%
@@ -81,6 +83,9 @@ table
 
 # TABLA 2: HPF
 
+full_data_population_tables <- read.csv("DATA/full_data_population_tables.csv") #full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
+
+colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_population_tables))
 trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`Physical activity`,`Wine consumption`,`Beer consumption`,`Liquor consumption`,`Tobacco consumption`, `Highly processed food consumption`) %>% mutate(`Physical activity` = factor(`Physical activity`, levels = c("High", "Moderate", "Low")))
 table <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "no")%>%
     bold_labels() %>%
@@ -103,3 +108,9 @@ table
 
 # TABLA 3: HEI
 
+full_data_population_tables <- read.csv("DATA/full_data_population_tables.csv") #full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
+
+colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_population_tables))
+colnames(full_data_population_tables)[17] <- "HbA1c (%)"
+colnames(full_data_population_tables)[19] <- "HOMA-IR"
+colnames(full_data_population_tables)[21] <- "Adiponectin (ug/ml)"
