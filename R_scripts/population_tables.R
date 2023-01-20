@@ -65,3 +65,37 @@ table_val <-
     modify_caption("**Summary statistics**")
 
 table_val
+
+
+### DESPUÉS DE LA CORRECCIÓN DEL 20/01: NUEVAS TABLAS
+
+# TABLA 1: COSAS COMUNES
+
+#full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
+trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `HEI classification`, `HEI group`, `cohort`)
+table <- tbl_summary(trial,by = cohort,missing = "no")%>%
+    bold_labels() %>%
+    modify_header(label ~ "**Variable**")
+
+table
+# TABLA 2: HPF
+
+trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`Physical activity`,`Wine consumption`,`Beer consumption`,`Liquor consumption`,`Tobacco consumption`, `Highly processed food consumption`) %>% mutate(`Physical activity` = factor(`Physical activity`, levels = c("High", "Moderate", "Low")))
+table <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "no")%>%
+    bold_labels() %>%
+    modify_header(label ~ "**Variable**")%>%
+    modify_spanning_header(c("stat_1", "stat_2") ~ "**Study cohort**")%>%
+    modify_header(stat_2 = "**Low HPF consumption (\u2264 15 % g/day)**, N = 27")%>%
+    modify_table_styling(
+        columns = label,
+        rows = label %in% c("Wine consumption","Beer consumption","Liquor consumption"),
+        footnote = " <u>Legend</u>:<br>1: Never or <1 month<br>
+        2: 2-4 times per week<br>
+        3: Once per day<br>
+        4: 1-3 time per month<br>
+        5: 5-6 times per week<br>
+        6: 2-3 times per day<br>
+        7: Once per week",
+        text_format = "bold")
+
+table
