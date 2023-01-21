@@ -26,25 +26,30 @@ if( !require("mikropml") ){
     library(mikropml)
 }
 
-data_complete <- read.table('data_clr_complete.tsv',
-                      header = TRUE, sep = '\t',# skip = 1,
+data_complete <- read.table("DATA/data_clr_complete.tsv",
+                      header = TRUE, sep = '\t', # skip = 1,
                       row.names = 1)
-ntrees<-seq(1,100)
-tuning_rf<-list(mtry=seq(1,70))
+
+descrCorr <- cor(data_complete)
+highCorr <- findCorrelation(descrCorr, 0.90)
+data_rf.uncor <- data_complete[, -highCorr]
+
+ntrees <- seq(1, 100)
+tuning_rf <- list(mtry = seq(1, 70))
 originals <- list()
 
-for (ntree in ntrees){print(ntree)
+for (ntree in ntrees) {
+    print(ntree)
     set.seed(2019)
-    results <- run_ml(data_complete, "rf",
-    outcome_colname = 'Grupo_HPF',
-    cross_val=caret::trainControl(method = "LOOCV"),
-    training_frac = 0.80, seed=2019,
-    calculate_performance = TRUE, ntree=ntree,
+    results <- run_ml(data_rf.uncor, "rf",
+    outcome_colname = 'HPF_group',
+    cross_val = caret::trainControl(method = "LOOCV"),
+    training_frac = 0.80, seed = 2019,
+    calculate_performance = TRUE, ntree = ntree,
     hyperparameters = tuning_rf,
     find_feature_importance = TRUE)
-                      
-    key<-toString(ntree)
-    originals[[key]]<-results
+    key <- toString(ntree)
+    originals[[key]] <- results
 }
 
 # Best model
@@ -54,7 +59,7 @@ originals$`17`$performance$AUC #0.88333
 imp.bi <- varImp(originals$`17`$trained_model, scale = FALSE)
 
 # Heatmap for the 20 most important microbial taxa identified by the best ML model trained after the HPF classification of the study cohort
-a <- imp.bi$importance %>% 
+a <- imp.bi$importance %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
     arrange(desc(Overall)) %>% mutate(rowname = forcats::fct_inorder(rowname)) %>%

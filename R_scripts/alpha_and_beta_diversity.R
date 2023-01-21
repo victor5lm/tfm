@@ -161,7 +161,7 @@ ggarrange(plotlist = graphs_ias,
 ## Wilcoxon tests for statistical differences between both groups
 wil.test <- bind_rows(pairwise_wilcox_test(df_ias_val, chao1 ~ group_HEI),
                       pairwise_wilcox_test(df_ias_val, shannon ~ group_HEI),
-                      pairwise_wilcox_test(df_ias_val, simpson ~ group_HEI) %>% 
+                      pairwise_wilcox_test(df_ias_val, simpson ~ group_HEI)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 

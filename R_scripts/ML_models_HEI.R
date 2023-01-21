@@ -18,7 +18,7 @@ if (!require("mikropml")) {
     ## For caret-based models
 
         ## classes file
-        class_ml <- read.table('DATA/classRF_grupos.tsv',
+        class_ml <- read.table('DATA/class_hei_groups.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
 
@@ -26,7 +26,7 @@ if (!require("mikropml")) {
         class.bi <- factor(class_ml$class)
 
         ## relative abundances table:
-        data_ml <- read.table('DATA/dataRF_clr.tsv',
+        data_ml <- read.table('DATA/data_clr_hei.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
 
@@ -34,15 +34,15 @@ if (!require("mikropml")) {
         # Removal of correlated variables:
         descrCorr <- cor(data_ml)
         highCorr <- findCorrelation(descrCorr, 0.90)
-        data_ml.uncor <- data_ml[, -highCorr]
+        data_ml.uncor_caret <- data_ml[, -highCorr]
 
         #Same seed as with mikropml. 80:20 training/test set split.
         set.seed(2019)
         inTrain <- createDataPartition(class.bi,
                                     p = 4/5, list = FALSE)
 
-        trainDescr <- data_ml.uncor[inTrain, ]
-        testDescr <- data_ml.uncor[-inTrain, ]
+        trainDescr <- data_ml.uncor_caret[inTrain, ]
+        testDescr <- data_ml.uncor_caret[-inTrain, ]
         trainClass.bi <- class.bi[inTrain]
         testClass.bi <- class.bi[-inTrain]
 
@@ -52,16 +52,19 @@ if (!require("mikropml")) {
 
     ## For mikropml-based models
 
-        data_complete <- read.table('DATA/data_clr_complete.tsv',
+        data_complete_hei_groups_rf <- read.table('DATA/data_clr_complete_hei_groups.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
+        descrCorr <- cor(data_complete_hei_groups_rf)
+        highCorr <- findCorrelation(descrCorr, 0.90)
+        data_ml.uncor_mikropml <- data_complete_hei_groups_rf[, -highCorr]
 
 ## CARET-BASED CLASSIFIERS -----
 
 ## Random Forest -----
 
     # Hyperparameter values for grid search
-    tunegrid_rf <- expand.grid(.mtry = seq(1, 70))
+    tunegrid_rf <- expand.grid(.mtry = seq(1, 200))
     ntrees <- seq(1, 100)
 
     set.seed(2019)
@@ -74,9 +77,10 @@ if (!require("mikropml")) {
         search = "grid",
     )
 
-    originals_caret <- list() # List in which all models will be stored. The best one will be chosen from here
+    originals_caret_hei <- list() # List in which all models will be stored. The best one will be chosen from here
 
-    for (ntree in ntrees){print(ntree)
+    for (ntree in ntrees){
+        print(ntree)
         set.seed(2019)
         fit <- train(trainDescr, trainClass.bi,
                     method = "rf",
@@ -84,7 +88,7 @@ if (!require("mikropml")) {
                     trControl = fitControl,
                     ntree = ntree)
         key <- toString(ntree)
-        originals_caret[[key]] <- fit
+        originals_caret_hei[[key]] <- fit
     }
 
     # Adittional model to retrieve the best classifier out of all the ones generated in the previous loop # nolint
@@ -100,22 +104,22 @@ if (!require("mikropml")) {
     }
 
     # Selection of the most precise model based on its accuracy
-    get_best_model(originals_caret) #mtry = 7; ntree = 4
+    get_best_model(originals_caret_hei) #mtry = 7; ntree = 4
 
 ## Stochastic Gradient Boosting -----
 
     #Hyperparameter tuning:
-    gbmGrid <-  expand.grid(interaction.depth = seq(1, 30),
-                            n.trees = seq(1, 100),
+    gbmGrid <-  expand.grid(interaction.depth = seq(1, 49),
+                            n.trees = seq(1, 30),
                             shrinkage = c(0.1, 0.9, by = 0.1),
-                            n.minobsinnode = 5)
+                            n.minobsinnode = seq(2, 10))
 
     set.seed(2019)
     fitControl_gbm <- trainControl(
         method = "LOOCV",
         savePredictions = TRUE,
         classProbs = TRUE,
-        summaryFunction = multiClassSummary,
+        summaryFunction = twoClassSummary,
         verboseIter = TRUE,
         search = "grid",
     )
@@ -125,7 +129,7 @@ if (!require("mikropml")) {
                     method = "gbm",
                     tuneGrid = gbmGrid,
                     trControl = fitControl_gbm,
-                    bag.fraction = 0.6)
+                    bag.fraction = 0.7)
 
 ## RBF-Kernel SVC -----
 
@@ -133,17 +137,17 @@ if (!require("mikropml")) {
     set.seed(2019)
 
     # Selection of sigma = mean(sigest(taste ~ ., data = train)[-2])
-    svm <- ksvm(x = as.matrix(trainDescr), y = trainClass.bi, kernel = "rbfdot", prob.model = TRUE)
+    svm_hei <- ksvm(x = as.matrix(trainDescr), y = trainClass.bi, kernel = "rbfdot", prob.model = TRUE)
 
-    svm_grid <- data.frame(sigma = kernelf(svm)@kpar$sigma,
-                        C = seq(100, 2000, by = 5))
+    svm_grid <- data.frame(sigma = kernelf(svm_hei)@kpar$sigma,
+                        C = seq(0.01, 10, by = 0.1))
 
     set.seed(2019)
     fitControl_svm <- trainControl(
         method = "LOOCV",
         savePredictions = TRUE,
         classProbs = TRUE,
-        summaryFunction = multiClassSummary,
+        summaryFunction = twoClassSummary,
         verboseIter = TRUE,
         search = "grid",
     )
@@ -159,21 +163,21 @@ if (!require("mikropml")) {
 ## Random Forest -----
 
 ntrees <- seq(1, 100)
-tuning_rf <- list(mtry = seq(1, 70))
+tuning_rf <- list(mtry = seq(1, 200))
 originals_mikropml <- list()
 
 for (ntree in ntrees) {
     print(ntree)
     set.seed(2019)
-    results <- run_ml(data_complete, "rf",
-    outcome_colname = "Grupo_HPF",
+    results_rf <- run_ml(data_ml.uncor_mikropml, "rf",
+    outcome_colname = 'HEI_group',
     cross_val = caret::trainControl(method = "LOOCV"),
     training_frac = 0.80, seed = 2019,
     calculate_performance = TRUE, ntree = ntree,
     hyperparameters = tuning_rf,
     find_feature_importance = TRUE)
     key <- toString(ntree)
-    originals_mikropml[[key]] <- results
+    originals_mikropml[[key]] <- results_rf
 }
 
 originals_mikropml$`17`$performance$AUC
@@ -181,17 +185,17 @@ originals_mikropml$`17`$performance$AUC
 
 ## Extreme Gradient Boosting -----
 
-tuning_xgbtree <- list(nrounds = seq(1, 50, by = 5),
-                      max_depth = seq(5, 20),
+tuning_xgbtree <- list(nrounds = seq(1, 25),
+                      max_depth = seq(1, 25),
                       colsample_bytree = seq(0.1, 0.9, by = 0.1),
-                      eta = seq(0.1, 0.5, by = 0.1),
+                      eta = 0.1,
                       gamma = 0,
                       min_child_weight = seq(1, 5),
-                      subsample = seq(0.1, 0.5, by = 0.1))
+                      subsample = seq(0.1, 0.7, by = 0.1))
 
 set.seed(2019)
-results_xgbtree <- run_ml(data_complete, "xgbTree",
-outcome_colname = "Grupo_HPF",
+results_xgbtree <- run_ml(data_ml.uncor_mikropml, "xgbTree",
+outcome_colname = 'HEI_group',
 cross_val = caret::trainControl(method = "LOOCV"),
 training_frac = 0.80, seed = 2019,
 calculate_performance = TRUE,
@@ -200,12 +204,13 @@ find_feature_importance = TRUE)
 
 ## RBF-Kernel SVC -----
 
-tuning_svm <- list(sigma = kernelf(svm)@kpar$sigma, C = seq(100, 2000, by = 5))
+tuning_svm <- list(sigma = kernelf(svm)@kpar$sigma, C = seq(0.0001, 0.1, by = 0.0001))
 
 set.seed(2019)
-results_svm <- run_ml(data_complete, "svmRadial",
-                     outcome_colname = "Grupo_HPF",
-                     cv_times = 49,
+results_svm <- run_ml(data_ml.uncor_mikropml, "svmRadial",
+                     outcome_colname = 'HEI_group',
+                     cv_times = 1,
+                     kfold = 37,
                      training_frac = 0.8, seed = 2019,
                      calculate_performance = TRUE,
                      hyperparameters = tuning_svm,

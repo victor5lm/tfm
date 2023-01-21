@@ -1,6 +1,6 @@
 library(tidyr)
 
-[...]
+# [...]
 
 processed_tb_clr <- tb_clr[!grepl("uncultured",tb_clr$Genus),]
 processed_tb_clr <- processed_tb_clr[!grepl(" Incertae_Sedis",processed_tb_clr$Genus),]

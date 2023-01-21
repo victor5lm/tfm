@@ -88,11 +88,6 @@ qiime feature-table tabulate-seqs \
 qiime metadata tabulate \
   --m-input-file denoising-stats.qza \
   --o-visualization denoising-stats.qzv
-  
-qiime feature-table summarize \
-  --i-table table.qza \
-  --o-visualization table.qzv \
-  --m-sample-metadata-file metadata_study_cohort.tsv
 
 # We then perform the taxonomic assignment of our features
 wget https://data.qiime2.org/2022.2/common/silva-138-99-nb-classifier.qza
