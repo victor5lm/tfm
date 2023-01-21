@@ -125,4 +125,5 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 
 # We are done with the taxonomic assignment.
 # Now, we will need taxonomy.qza, filtered_table.qza and rooted-tree.qza
-# for the phyloseq object construction, along with the metadata
+# for the phyloseq object construction, along with the metadata.
+# Please go to R_scripts/qiime_to_R.R
