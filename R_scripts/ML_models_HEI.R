@@ -1,4 +1,4 @@
-#ML classifiers built for the study cohort, classified based on its participants' HPF consumption.
+#ML classifiers built for the study cohort, classified based on its participants' HEI consumption.
 
 ## Necessary R packages -----
 library(caret)
