@@ -6,6 +6,8 @@
 library(ape)
 library(phyloseq)
 library(microbiome)
+library(tidyr)
+library(dplyr)
 
 # First, we need this function
     metaphlanToPhyloseq <- function(
