@@ -67,7 +67,8 @@ groups_for_pheatmap <- read.csv("heatmap_files/additional_files_hei_classificati
 abunda_clr_pheatmap <- read.csv("heatmap_files/additional_files_hei_classification/abundancias_clr_para_pheatmap.csv")
 rownames(abunda_clr_pheatmap) <- abunda_clr_pheatmap$Sample
 abunda_clr_pheatmap$Sample <- NULL
-abunda_clr_pheatmap_matrix <- as.matrix(abunda_clr_pheatmap)                                            
+abunda_clr_pheatmap_matrix <- as.matrix(abunda_clr_pheatmap)
+colnames(abunda_clr_pheatmap_matrix)<-gsub("_"," ",colnames(abunda_clr_pheatmap_matrix))
                                             
 p2 = ComplexHeatmap::HeatmapAnnotation(Importance = anno_barplot(table_imp_mikropml_rf_for_pheatmap$Overall, gp = gpar(fill = ifelse(table_imp_mikropml_rf_for_pheatmap$`groups_imp$groups_imp` == 0, "#073444", "#bae9fa"))), height = unit(3, "cm"), HEI_Group = groups_for_pheatmap_genuses$Group, col = list(HEI_Group = c("Good HEI" = "#073444", "Poor HEI" = "#bae9fa")), annotation_name_gp = gpar(fontsize = 10, fontface = "bold"), annotation_legend_param = list(title="", labels_gp = gpar(font=2, fontsize = 12)), border = TRUE, gap = unit(1, "mm"))
 
