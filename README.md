@@ -42,7 +42,7 @@ The `R_scripts` directory contains:
 - `qiime_to_R.R`: R script indicating how, once all QIIME2-related procedures for the study cohort were finished, the resulting artifacts were used for the creation of phyloseq objects in R necessary for diversity analyses, DAA and ML classifier construction.
 - `quantile_graphs.R`: R script describing how supplementary figures, showing boxplots of some differently abundant taxa vs quantiles made using the validation cohort based on their levels of several glycaemic traits (HOMA-IR, HbA1c (%) and adiponectin) and HEI, were obtained. The identification of these taxa differentially abundant among these quantiles via the Kruskal-Wallis rank sum test is also detailed in this script.
 - `roc_curves.R`: R script detailing how ROC curves for all ML classifiers regarding both classifications of the study cohort were made.
-- `validation.R`: R script describing how validation of the best ML classifier trained on the study cohort classified based on their HEI was performed using the relative abundances table from the validation cohort.
+- `validation.R`: R script describing how validation of the best ML classifier trained on the study cohort classified based on their HEI was performed using the relative abundances table from the validation cohort, along with the plotting of the ROC curve linked to this validation.
 
 ## Taxonomic assignment
 

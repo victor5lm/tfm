@@ -1,3 +1,7 @@
+# Script for alpha and beta diversity analyses both both cohorts grouped based on HPF consumption 
+# (study cohort) and HEI (both cohorts)
+
+# First, we need to import all necessary libraries:
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -63,7 +67,7 @@ ggarrange(plotlist = graphs_alpha,
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test_alpha <- bind_rows(pairwise_wilcox_test(df_alpha, chao1 ~ Grupo_HPF),
+wil.test_alpha_hpf <- bind_rows(pairwise_wilcox_test(df_alpha, chao1 ~ Grupo_HPF),
                       pairwise_wilcox_test(df_alpha, shannon ~ Grupo_HPF),
                       pairwise_wilcox_test(df_alpha, simpson ~ Grupo_HPF)) %>% 
 adjust_pvalue(method = "BH") %>%
@@ -71,10 +75,10 @@ add_significance()
 
 #------------
 # Study cohort: HEI classification
-p_ias <- makeTreeSummarizedExperimentFromPhyloseq(phy_gen_ias) #phy_gen_ias is the phyloseq object with all agglomerated absolute abundances for the HEI classification
-tse.list_ias <- list("p_ias" = p_ias)
-tse.list_ias <- lapply(names(tse.list_ias), function(x){
-    tse.list_ias[[x]] <- tse.list_ias[[x]] %>%
+p_hei <- makeTreeSummarizedExperimentFromPhyloseq(phy_gen) #phy_gen is the phyloseq object with all agglomerated absolute abundances for the HEI classification
+tse.list_hei <- list("p_hei" = p_hei)
+tse.list_hei <- lapply(names(tse.list_hei), function(x){
+    tse.list_hei[[x]] <- tse.list_hei[[x]] %>%
         estimateRichness(abund_values = "counts",
                          index = "observed",
                          name = "observed") %>%
@@ -88,14 +92,14 @@ tse.list_ias <- lapply(names(tse.list_ias), function(x){
                           index = "gini_simpson", 
                           name = "simpson")
 })
-names(tse.list_ias) <- c("PYM")
-df_ias <- as.data.frame(colData(tse.list_ias$PYM)) %>%
+names(tse.list_hei) <- c("PYM")
+df_hei <- as.data.frame(colData(tse.list_hei$PYM)) %>%
     select(chao1, shannon, simpson, Grupo_HEI)
 counter <<- 0
-graphs_ias <-lapply(df_ias[ ,c("chao1", "shannon", "simpson")], 
+graphs_hei <-lapply(df_hei[ ,c("chao1", "shannon", "simpson")], 
                     function(a) 
                     {counter <<- counter + 1
-                    ggplot(df_ias, aes(x = Grupo_HEI, y = a)) +
+                    ggplot(df_hei, aes(x = Grupo_HEI, y = a)) +
                         geom_boxplot(aes(fill = Grupo_HEI), 
                                      alpha=.5,
                                      outlier.shape = NA) +
@@ -105,22 +109,22 @@ graphs_ias <-lapply(df_ias[ ,c("chao1", "shannon", "simpson")],
                                     test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                         geom_jitter(width = 0.2,
                                     aes(colour = Grupo_HEI), size = 1.5) +
-                        ylab(gsub('_', ' ', colnames(df_ias)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
-ggarrange(plotlist = graphs_ias,
+                        ylab(gsub('_', ' ', colnames(df_hei)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
+ggarrange(plotlist = graphs_hei,
           common.legend = TRUE, legend = "bottom",
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test <- bind_rows(pairwise_wilcox_test(df_ias, chao1 ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_ias, shannon ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_ias, simpson ~ Grupo_HPF)) %>% 
+wil.test_alpha_hei <- bind_rows(pairwise_wilcox_test(df_hei, chao1 ~ Grupo_HPF),
+                      pairwise_wilcox_test(df_hei, shannon ~ Grupo_HPF),
+                      pairwise_wilcox_test(df_hei, simpson ~ Grupo_HPF)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 
 #------------
 # Validation cohort: HEI classification
-p_ias_val <- makeTreeSummarizedExperimentFromPhyloseq(phy_gen_ias_val) #phy_gen_ias_val is the phyloseq object with agglomerated absolute abundances
-tse.list_val <- list("p_ias_val" = p_ias_val)
+p_hei_val <- makeTreeSummarizedExperimentFromPhyloseq(phy_gen_val_abs) #phy_gen_val_abs is the phyloseq object with agglomerated absolute abundances
+tse.list_val <- list("p_hei_val" = p_hei_val)
 tse.list_val <- lapply(names(tse.list_val), function(x){
     tse.list_val[[x]] <- tse.list_val[[x]] %>%
         estimateRichness(abund_values = "counts",
@@ -137,13 +141,13 @@ tse.list_val <- lapply(names(tse.list_val), function(x){
                           name = "simpson")
 })
 names(tse.list_val) <- c("PYM")
-df_ias_val <- as.data.frame(colData(tse.list_val$PYM)) %>%
+df_hei_val <- as.data.frame(colData(tse.list_val$PYM)) %>%
     select(chao1, shannon, simpson, group_HEI)
 counter <<- 0
-graphs_ias <-lapply(df_ias_val[ ,c("chao1", "shannon", "simpson")], 
+graphs_hei_val <-lapply(df_hei_val[ ,c("chao1", "shannon", "simpson")], 
                     function(a) 
                     {counter <<- counter + 1
-                    ggplot(df_ias_val, aes(x = group_HEI, y = a)) +
+                    ggplot(df_hei_val, aes(x = group_HEI, y = a)) +
                         geom_boxplot(aes(fill = group_HEI), 
                                      alpha=.5,
                                      outlier.shape = NA) +
@@ -153,21 +157,21 @@ graphs_ias <-lapply(df_ias_val[ ,c("chao1", "shannon", "simpson")],
                                     test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                         geom_jitter(width = 0.2,
                                     aes(colour = group_HEI), size = 1.5) +
-                        ylab(gsub('_', ' ', colnames(df_ias)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
-ggarrange(plotlist = graphs_ias,
+                        ylab(gsub('_', ' ', colnames(df_hei)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
+ggarrange(plotlist = graphs_hei_val,
           common.legend = TRUE, legend = "bottom",
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test <- bind_rows(pairwise_wilcox_test(df_ias_val, chao1 ~ group_HEI),
-                      pairwise_wilcox_test(df_ias_val, shannon ~ group_HEI),
-                      pairwise_wilcox_test(df_ias_val, simpson ~ group_HEI)) %>% 
+wil.test_alpha_hei_val <- bind_rows(pairwise_wilcox_test(df_hei_val, chao1 ~ group_HEI),
+                      pairwise_wilcox_test(df_hei_val, shannon ~ group_HEI),
+                      pairwise_wilcox_test(df_hei_val, simpson ~ group_HEI)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 
 #---BETA-DIVERSITY ANALYSES---
 
-# Study cohort: HPF classification
+# Study cohort: HPF classification -----
 
 ## Auxiliar functions
 ### Calculates distances
@@ -247,7 +251,7 @@ ggarrange(plist[[1]],
 
 phy_gen_comp.beta.adonis # To check PERMANOVA results
 
-# Study cohort: HEI classification
+# Study cohort: HEI classification -----
 
 distances <- function(study_pseq) {
     for( i in dist_methods ){
@@ -310,12 +314,12 @@ names(dlist) <- dist_methods
 pcoa_list <- dlist # PCoA
 plist <- dlist # plots
 
-phy_gen_ias_comp <- microbiome::transform(phy_gen_ias, "compositional")
-phy_gen_ias_comp.beta <- distances(phy_gen_ias_comp)
-phy_gen_ias_comp.beta.adonis <- adonis_calculator(phy_gen_ias_comp.beta$dlist, phy_gen_ias_comp)
-phy_gen_ias_comp.beta.plot <- plotter_beta(dist_methods, phy_gen_ias_comp, phy_gen_ias_comp.beta$pcoa_list)
+phy_gen_hei_comp <- microbiome::transform(phy_gen_hei, "compositional")
+phy_gen_hei_comp.beta <- distances(phy_gen_hei_comp)
+phy_gen_hei_comp.beta.adonis <- adonis_calculator(phy_gen_hei_comp.beta$dlist, phy_gen_hei_comp)
+phy_gen_hei_comp.beta.plot <- plotter_beta(dist_methods, phy_gen_hei_comp, phy_gen_hei_comp.beta$pcoa_list)
 
-plist <- plotter_beta(dist_methods, phy_gen_ias_comp, phy_gen_ias_comp.beta$pcoa_list)
+plist <- plotter_beta(dist_methods, phy_gen_hei_comp, phy_gen_hei_comp.beta$pcoa_list)
 ggarrange(plotlist = plist,
           common.legend = TRUE, legend = "right")
 
@@ -323,12 +327,12 @@ ggarrange(plist[[1]],
           common.legend = TRUE, legend = "bottom",
           align = 'hv')
                       
-phy_gen_ias_comp.beta.adonis # To check PERMANOVA results
+phy_gen_hei_comp.beta.adonis # To check PERMANOVA results
                       
-# Validation cohort: HEI classification
+# Validation cohort: HEI classification -----
 
 distances <- function(study_pseq) {
-    for( i in dist_methods ){
+    for(i in dist_methods){
         # Calculate distance matrix
         iDist <- phyloseq::distance(study_pseq, method = i)
         dlist[[i]] <- iDist
@@ -388,12 +392,11 @@ names(dlist) <- dist_methods
 pcoa_list <- dlist # PCoA
 plist <- dlist # plots
 
-phy_gen_ias_comp <- tax_glom(phyloseqin_ai4food_v1.tree,taxrank="Genus",NArm=TRUE)
-phy_gen_ias_comp.beta <- distances(phy_gen_ias_comp)
-phy_gen_ias_comp.beta.adonis <- adonis_calculator(phy_gen_ias_comp.beta$dlist, phy_gen_ias_comp)
-phy_gen_ias_comp.beta.plot <- plotter_beta(dist_methods, phy_gen_ias_comp, phy_gen_ias_comp.beta$pcoa_list)
+phy_gen_hei_comp.beta_val <- distances(phy_gen_val)
+phy_gen_hei_comp.beta.adonis_val <- adonis_calculator(phy_gen_hei_comp.beta_val$dlist, phy_gen_val)
+phy_gen_hei_comp.beta.plot_val <- plotter_beta(dist_methods, phy_gen_val, phy_gen_hei_comp.beta_val$pcoa_list)
 
-plist <- plotter_beta(dist_methods, phy_gen_ias_comp, phy_gen_ias_comp.beta$pcoa_list)
+plist <- plotter_beta(dist_methods, phy_gen_val, phy_gen_hei_comp.beta_val$pcoa_list)
 ggarrange(plotlist = plist,
           common.legend = TRUE, legend = "right")
 
@@ -401,4 +404,4 @@ ggarrange(plist[[1]],
           common.legend = TRUE, legend = "bottom",
           align = 'hv')
                       
-phy_gen_ias_comp.beta.adonis # To check PERMANOVA results
+phy_gen_hei_comp.beta.adonis_val # To check PERMANOVA results
