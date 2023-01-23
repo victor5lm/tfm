@@ -104,7 +104,7 @@ if (!require("mikropml")) {
     }
 
     # Selection of the most precise model based on its accuracy
-    get_best_model(originals_caret_hei) #mtry = 7; ntree = 4
+    get_best_model(originals_caret_hei) #mtry = 64; ntree = 88
 
 ## Stochastic Gradient Boosting -----
 
@@ -125,7 +125,7 @@ if (!require("mikropml")) {
     )
 
     set.seed(2019)
-    fit_gbm <- train(trainDescr, trainClass.bi,
+    fit_gbm_hei <- train(trainDescr, trainClass.bi,
                     method = "gbm",
                     tuneGrid = gbmGrid,
                     trControl = fitControl_gbm,
@@ -153,7 +153,7 @@ if (!require("mikropml")) {
     )
 
     set.seed(2019)
-    svm_model <- train(trainDescr, trainClass.bi,
+    svm_model_hei <- train(trainDescr, trainClass.bi,
                 method = "svmRadial",
                 trControl = fitControl_svm,
                 tuneGrid = svm_grid)
@@ -180,7 +180,7 @@ for (ntree in ntrees) {
     originals_mikropml[[key]] <- results_rf
 }
 
-originals_mikropml$`17`$performance$AUC
+originals_mikropml$`88`$performance$AUC
 # 0.8833333
 
 ## Extreme Gradient Boosting -----
@@ -194,7 +194,7 @@ tuning_xgbtree <- list(nrounds = seq(1, 25),
                       subsample = seq(0.1, 0.7, by = 0.1))
 
 set.seed(2019)
-results_xgbtree <- run_ml(data_ml.uncor_mikropml, "xgbTree",
+results_xgbtree_hei <- run_ml(data_ml.uncor_mikropml, "xgbTree",
 outcome_colname = 'HEI_group',
 cross_val = caret::trainControl(method = "LOOCV"),
 training_frac = 0.80, seed = 2019,
@@ -207,7 +207,7 @@ find_feature_importance = TRUE)
 tuning_svm <- list(sigma = kernelf(svm)@kpar$sigma, C = seq(0.0001, 0.1, by = 0.0001))
 
 set.seed(2019)
-results_svm <- run_ml(data_ml.uncor_mikropml, "svmRadial",
+results_svm_hei <- run_ml(data_ml.uncor_mikropml, "svmRadial",
                      outcome_colname = 'HEI_group',
                      cv_times = 1,
                      kfold = 37,
