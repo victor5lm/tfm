@@ -26,7 +26,7 @@ if( !require("mikropml") ){
     library(mikropml)
 }
 
-data_complete <- read.table("DATA/data_clr_complete.tsv",
+data_complete <- read.table("DATA/data_clr_hpf.tsv",
                       header = TRUE, sep = '\t', # skip = 1,
                       row.names = 1)
 

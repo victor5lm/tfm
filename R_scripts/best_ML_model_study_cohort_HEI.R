@@ -25,9 +25,7 @@ if( !require("mikropml") ){
     library(mikropml)
 }
 
-data_complete_hei_groups_rf <- read.table('DATA/data_clr_complete_hei_groups.tsv',
-                      header = TRUE, sep = '\t', # skip = 1,
-                      row.names = 1)
+data_complete_hei_groups_rf <- read.csv('DATA/data_clr_hei.csv')
 
 descrCorr <- cor(data_complete_hei_groups_rf)
 highCorr <- findCorrelation(descrCorr, 0.90)
