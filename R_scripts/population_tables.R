@@ -140,5 +140,5 @@ table_hei <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_s
 table_hei
 
 table_hei[1]$table_body <-table_hei[1]$table_body %>% 
-      mutate(across(c(stat_1_1, stat_2_1), ~gsub("0 \\(NA\\)", "NA",.)))
+      mutate(across(c(stat_1_1, stat_2_1), ~gsub("0 \\(NA%\\)", "NA",.)))
 table_hei
