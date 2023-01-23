@@ -77,7 +77,7 @@ colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_popul
 trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `cohort`)
 table <- tbl_summary(trial,by = cohort,missing = "no")%>%
     bold_labels() %>%
-    modify_header(label ~ "**Variable**") %>% add_p() %>% add_q()
+    modify_header(label ~ "**Variable**")
 
 table
 
@@ -140,5 +140,5 @@ table_hei <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_s
 table_hei
 
 table_hei[1]$table_body <-table_hei[1]$table_body %>% 
-      mutate(across(c(stat_1_1, stat_2_1), ~gsub("0 \\(NA%\\)", "NA",.)))
+      mutate(across(c(stat_1_1, stat_2_1), ~gsub("0 \\(NA%\\)", "NA", .)))
 table_hei
