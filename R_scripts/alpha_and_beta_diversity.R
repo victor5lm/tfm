@@ -314,7 +314,7 @@ names(dlist) <- dist_methods
 pcoa_list <- dlist # PCoA
 plist <- dlist # plots
 
-phy_gen_hei_comp <- microbiome::transform(phy_gen_hei, "compositional")
+phy_gen_hei_comp <- microbiome::transform(phy_gen, "compositional")
 phy_gen_hei_comp.beta <- distances(phy_gen_hei_comp)
 phy_gen_hei_comp.beta.adonis <- adonis_calculator(phy_gen_hei_comp.beta$dlist, phy_gen_hei_comp)
 phy_gen_hei_comp.beta.plot <- plotter_beta(dist_methods, phy_gen_hei_comp, phy_gen_hei_comp.beta$pcoa_list)
