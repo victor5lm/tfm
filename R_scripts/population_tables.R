@@ -77,7 +77,7 @@ colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_popul
 trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`, `cohort`)
 table <- tbl_summary(trial,by = cohort,missing = "no")%>%
     bold_labels() %>%
-    modify_header(label ~ "**Variable**")
+    modify_header(label ~ "**Variable**") %>% add_p() %>% add_q()
 
 table
 
@@ -86,8 +86,8 @@ table
 full_data_population_tables <- read.csv("DATA/full_data_population_tables.csv") #full_data_population_tables es la tabla con toda la info, la del study cohort y la del validation cohort toda junta
 
 colnames(full_data_population_tables) <- gsub("\\."," ",colnames(full_data_population_tables))
-trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`Physical activity`,`Wine consumption`,`Beer consumption`,`Liquor consumption`,`Tobacco consumption`, `Highly processed food consumption`) %>% mutate(`Physical activity` = factor(`Physical activity`, levels = c("High", "Moderate", "Low")))
-table <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "no")%>%
+trial_hpf <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`Physical activity`,`Wine consumption`,`Beer consumption`,`Liquor consumption`,`Tobacco consumption`, `Highly processed food consumption`) %>% mutate(`Physical activity` = factor(`Physical activity`, levels = c("High", "Moderate", "Low")))
+table_hpf <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "no") %>% add_p() %>% add_q() %>%
     bold_labels() %>%
     modify_header(label ~ "**Variable**")%>%
     modify_spanning_header(c("stat_1", "stat_2") ~ "**Study cohort**")%>%
@@ -104,7 +104,7 @@ table <- tbl_summary(trial,by = `Highly processed food consumption`,missing = "n
         7: Once per week",
         text_format = "bold")
 
-table
+table_hpf
 
 # TABLA 3: HEI
 
@@ -117,8 +117,8 @@ colnames(full_data_population_tables)[21] <- "Adiponectin (ug/ml)"
 full_data_population_tables$`HOMA-IR` <- gsub(">=3","\u22653",full_data_population_tables$`HOMA-IR`)
 full_data_population_tables$`Adiponectin (ug/ml)` <- gsub(">=5","\u22655",full_data_population_tables$`Adiponectin (ug/ml)`)
 
-trial <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`HbA1c (%)`, `HOMA-IR`, `Adiponectin (ug/ml)`, `HEI classification`, `cohort`, `HEI group`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653"))) %>% mutate(`Adiponectin (ug/ml)` = factor(`Adiponectin (ug/ml)`, levels = c("<5","\u22655"))) %>% mutate(`HbA1c (%)` = factor(`HbA1c (%)`, levels = c("<5.7","5.7 to 6.4"))) %>% mutate(`HEI classification` = factor(`HEI classification`, levels = c("Excellent","Very good","Good","Acceptable","Inappropriate")))
-table <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_summary(by = `HEI group`, missing = "no", label = "Adiponectin (ug/ml)" ~ "Adiponectin (\u03BCg/ml)"), .header = "**{strata}**, N = {n}") %>% bold_labels() %>% modify_header(stat_1_1 = "**Good HEI (\u2265 61)**, N = 34", stat_1_2 = "**Good HEI (\u2265 61)**, N = 24") %>% modify_header(label ~ "**Variable**") %>% modify_table_styling(
+trial_hei <- full_data_population_tables %>% select(`Age`, `Sex`, `BMI`,`HbA1c (%)`, `HOMA-IR`, `Adiponectin (ug/ml)`, `HEI classification`, `cohort`, `HEI group`) %>% mutate(`HOMA-IR` = factor(`HOMA-IR`, levels = c("<1.96", "1.96 to 2.99", "\u22653"))) %>% mutate(`Adiponectin (ug/ml)` = factor(`Adiponectin (ug/ml)`, levels = c("<5","\u22655"))) %>% mutate(`HbA1c (%)` = factor(`HbA1c (%)`, levels = c("<5.7","5.7 to 6.4"))) %>% mutate(`HEI classification` = factor(`HEI classification`, levels = c("Excellent","Very good","Good","Acceptable","Inappropriate")))
+table_hei <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_summary(by = `HEI group`, missing = "no", label = "Adiponectin (ug/ml)" ~ "Adiponectin (\u03BCg/ml)") %>% add_p() %>% add_q(), .header = "**{strata}**, N = {n}") %>% bold_labels() %>% modify_header(stat_1_1 = "**Good HEI (\u2265 61)**, N = 34", stat_1_2 = "**Good HEI (\u2265 61)**, N = 24") %>% modify_header(label ~ "**Variable**") %>% modify_table_styling(
     columns = label,
     rows = label %in% "HbA1c (%)",
     footnote = "<u>Legend</u>:<br><5.7: Normal values<br>
@@ -137,4 +137,8 @@ table <- tbl_strata(data = trial, strata = cohort, .tbl_fun = ~ .x %>% tbl_summa
         footnote = "<u>Legend</u>:<br><5: Abnormal values<br>
         \u22655: Normal values<br><b>NA: Data not available</b></u>",
         text_format = "bold")
-table
+table_hei
+
+table_hei[1]$table_body <-table_hei[1]$table_body %>% 
+      mutate(across(c(stat_1_1, stat_2_1), ~gsub("0 \\(NA\\)", "NA",.)))
+table_hei
