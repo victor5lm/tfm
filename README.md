@@ -9,6 +9,10 @@ Scripts used to analyze the metagenomic data and build all classifiers, as well 
 
 ## Data directory
 
+This directory contains all files used for the training of all Machine Learning classifiers, for the generation of both heatmaps shown in the TFM Thesis and for the plotting of all figures shown in the same document.
+
+* <hola>
+
 ## Taxonomic assignment
 
 ## R scripts
