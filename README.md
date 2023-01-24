@@ -12,7 +12,7 @@ This repository contains all scripts and auxiliary data used to analyse metageno
 
 This directory contains all files used for the training of all Machine Learning classifiers, for the generation of both heatmaps shown in the TFM Thesis and for the plotting of all figures shown in the same document. These are:
 
-- One directory called `importances_HPF`. Six files are stored here:
+- One directory called `importances_HPF`. Six files are stored here, where each file contains importances for all 20 taxa identified to be important by its corresponding model and the HPF classification of the study cohort:
     - `imp_caret_gbm.csv`
     - `imp_caret_rf.csv`
     - `imp_caret_svm.csv`
@@ -20,7 +20,7 @@ This directory contains all files used for the training of all Machine Learning 
     - `imp_mikropml_svm.csv`
     - `imp_mikropml_xgbtree.csv`
 
-- One directory called `importances_HEI`. Six files are stored here:
+- One directory called `importances_HEI`. Six files are stored here, where each file contains importances for all 20 taxa identified to be important by its corresponding model and the HEI classification of the study cohort:
     - `imp_caret_gbm_hei.csv`
     - `imp_caret_rf_hei.csv`
     - `imp_caret_svm_hei.csv`
@@ -28,18 +28,18 @@ This directory contains all files used for the training of all Machine Learning 
     - `imp_mikropml_svm_hei.csv`
     - `imp_mikropml_xgbtree_hei.csv`
 
-- `class_hei_groups.tsv`
-- `class_hpf_groups.tsv`
-- `data_clr.tsv`
-- `data_clr_hei.csv`
-- `data_clr_hpf.tsv`
-- `filtered_table.qza`
-- `full_data_population_tables.csv`
-- `metadata_study_cohort.csv`
-- `metadata_validation_cohort.csv`
-- `metaphlan_abundances_validation_cohort.csv`
-- `rooted-tree.qza`
-- `taxonomy.qza`
+- `class_hei_groups.tsv`: this file indicates which HEI group each sample from the study cohort belongs to.
+- `class_hpf_groups.tsv`: this file indicates which HPF group each sample from the study cohort belongs to.
+- `data_clr.tsv`: this file is the CLR-transformed relative abundances table relative to the study cohort, without indicating which group each sample pertains to.
+- `data_clr_hei.csv`: this file contains the same information as `data_clr.tsv` but with an additional final column indicating which HEI group each sample from the study cohort belongs to.
+- `data_clr_hpf.tsv`: this file contains the same information as `data_clr.tsv` but with an additional final column indicating which HPF group each sample from the study cohort belongs to.
+- `filtered_table.qza`: this is one of the QIIME2 artifacts needed to create phyloseq objects from the study cohort necessary for diversity analyses, DAA and ML classifier construction. If transformed into a visualisation file (.qzv), it informs us about the number of samples taken into account, the number of identified features, etc.
+- `full_data_population_tables.csv`: this file contains all metadata from both cohorts merged in this one .csv table. Variables only available in one of the two cohorts are also shown, with NAs indicating missing data.
+- `metadata_study_cohort.csv`: this .csv table contains all metadata from the study cohort.
+- `metadata_validation_cohort.csv`: this .csv table contains all metadata from the validation cohort.
+- `metaphlan_abundances_validation_cohort.csv`: this .csv table contains the relative abundances table obtained after executing MetaPhlAn4 on the raw reads from the validation cohort.
+- `rooted-tree.qza`: this is one of the QIIME2 artifacts needed to create phyloseq objects from the study cohort necessary for diversity analyses, DAA and ML classifier construction. It is the rooted tree obtained during read processing with QIIME2, MAFFT and FastTree.
+- `taxonomy.qza`: this is one of the QIIME2 artifacts needed to create phyloseq objects from the study cohort necessary for diversity analyses, DAA and ML classifier construction. If transformed into a visualisation file (.qzv), it informs us about the number of samples taken into account, the number of identified features, etc. If transformed into a visualisation file (.qzv), it informs us about the full taxonomy of each identified feature.
 
 ## Files for heatmap construction
 
