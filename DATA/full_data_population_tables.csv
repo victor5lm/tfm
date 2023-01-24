@@ -1,0 +1,107 @@
+SampleID,Age,Sex,P_sQ_HPF,Eq_sQ_HPF,HEI,HEI classification,BMI,Physical activity,Wine consumption,Beer consumption,Liquor consumption,Tobacco consumption,Highly processed food consumption,HEI group,hba1c_perc,HbA1c (%),homa-ir,HOMA-IR,adiponectin_ug_ml,Adiponectin (ug/ml),cohort
+PYM000,33,Female,4,22.4,70.5,Very good,Normal,Low,7,2,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM001,38,Female,2,15,59.3,Acceptable,Normal,Low,2,4,4,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM101,58,Female,5,26.1,66.2,Good,Normal,Low,4,7,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM102,55,Female,5,26.1,67.8,Good,Overweight/Obesity,Low,4,4,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM103,57,Female,3,18.7,73.4,Very good,Overweight/Obesity,Low,1,7,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM104,56,Female,6,29.8,48.9,Inappropriate,Overweight/Obesity,Low,4,4,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM107,51,Female,1,11.3,64.2,Good,Normal,Moderate,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM110,57,Female,3,18.7,75.3,Very good,Normal,High,3,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM111,56,Female,2,15,55.9,Acceptable,Normal,High,1,4,1,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM112,44,Female,2,15,59.4,Acceptable,Normal,Low,4,6,1,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM113,55,Female,2,15,65,Good,Overweight/Obesity,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM201,53,Female,5,26.1,76.2,Very good,Overweight/Obesity,Moderate,4,7,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM202,50,Female,2,15,68.3,Good,Overweight/Obesity,Moderate,2,2,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM203,28,Female,1,11.3,62.1,Good,Normal,Low,2,5,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM204,55,Female,6,29.8,41.5,Inappropriate,Overweight/Obesity,High,2,3,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM205,23,Female,2,15,68,Good,Normal,Moderate,4,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM208,25,Female,3,18.7,58.8,Acceptable,Normal,High,1,4,1,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM209,28,Female,2,15,75.4,Very good,Normal,High,4,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM210,26,Female,7,33.5,63.1,Good,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM211,21,Female,6,29.8,45.6,Inappropriate,Normal,High,2,5,2,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM301,38,Female,2,15,69.2,Good,Overweight/Obesity,Low,4,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM302,42,Female,4,22.4,77,Very good,Overweight/Obesity,Moderate,4,2,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM303,53,Female,2,15,56.2,Acceptable,Overweight/Obesity,Low,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM305,38,Male,3,18.7,67.7,Good,Normal,High,2,2,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM306,32,Female,3,18.7,69.9,Good,Normal,High,4,2,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM308,29,Female,1,11.3,74.4,Very good,Normal,Moderate,2,2,4,Y,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM309,31,Female,2,15,63,Good,Normal,Moderate,5,2,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM310,23,Female,4,22.4,55.2,Acceptable,Normal,Moderate,7,5,4,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM311,21,Male,4,22.4,52.7,Acceptable,Overweight/Obesity,High,1,4,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM402,35,Male,5,26.1,67.5,Good,Overweight/Obesity,Moderate,4,7,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM403,26,Male,6,29.8,45.6,Inappropriate,Overweight/Obesity,High,4,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM404,32,Male,6,29.8,46.5,Inappropriate,Overweight/Obesity,High,4,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM405,31,Female,6,29.8,47.9,Inappropriate,Normal,High,7,3,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM406,46,Female,3,18.7,83.4,Excellent,Normal,High,6,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM407,36,Female,1,11.3,70.6,Very good,Normal,Moderate,7,5,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM408,46,Male,4,22.4,55.2,Acceptable,Overweight/Obesity,High,7,5,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM410,33,Male,5,26.1,55.3,Acceptable,Normal,Low,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM411,32,Female,2,15,67.5,Good,Normal,High,4,7,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM412,33,Female,1,11.3,75.2,Very good,Normal,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM413,30,Female,4,22.4,52,Acceptable,Normal,Moderate,4,4,1,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM414,27,Female,1,11.3,55,Acceptable,Normal,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM501,35,Female,3,18.7,67.7,Good,Overweight/Obesity,Low,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM502,45,Female,1,11.3,47.2,Inappropriate,Overweight/Obesity,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM503,52,Female,5,26.1,85.6,Excellent,Overweight/Obesity,Moderate,2,2,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM504,36,Male,2,15,47.8,Inappropriate,Normal,High,4,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM506,39,Female,6,29.8,55.5,Acceptable,Normal,Low,7,4,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM507,46,Female,2,15,42,Inappropriate,Normal,Moderate,4,4,4,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM508,34,Female,2,15,53.5,Acceptable,Normal,Moderate,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM509,39,Female,1,11.3,74.7,Very good,Normal,Moderate,7,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM511,49,Female,1,11.3,87.5,Excellent,Overweight/Obesity,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM513,34,Female,2,15,69.6,Good,Normal,Moderate,7,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM601,32,Female,4,22.4,54.5,Acceptable,Normal,High,1,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM604,48,Female,1,11.3,76,Very good,Normal,High,7,2,1,Y,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM605,35,Female,4,22.4,63.7,Good,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM607,32,Female,4,22.4,47.3,Inappropriate,Normal,High,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM608,23,Female,4,22.4,64.6,Good,Normal,High,4,5,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM609,49,Male,1,11.3,80.6,Excellent,Overweight/Obesity,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM612,25,Female,6,29.8,51.1,Acceptable,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM613,23,Female,1,11.3,41.9,Inappropriate,Normal,Moderate,4,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61),NA,NA,NA,NA,NA,NA,Study cohort
+PYM614,22,Male,3,18.7,77,Very good,Normal,High,1,4,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61),NA,NA,NA,NA,NA,NA,Study cohort
+447,59,Male,NA,NA,71.5,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,2.17,1.96 to 2.99,1.97,<5,Validation cohort
+644,69,Female,NA,NA,41.1,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),6.2,5.7 to 6.4,4.35,>=3,2.79,<5,Validation cohort
+650,50,Female,NA,NA,69.5,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,3.59,>=3,4.16,<5,Validation cohort
+664,50,Female,NA,NA,55.3,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.5,<5.7,1.63,<1.96,29.14,>=5,Validation cohort
+668,55,Female,NA,NA,73.9,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6.1,5.7 to 6.4,2.54,1.96 to 2.99,11.23,>=5,Validation cohort
+783,51,Male,NA,NA,68.4,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,1.53,<1.96,12.79,>=5,Validation cohort
+787,63,Female,NA,NA,64.7,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6.1,5.7 to 6.4,1.56,<1.96,12.92,>=5,Validation cohort
+789,62,Female,NA,NA,65.3,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6,5.7 to 6.4,2,1.96 to 2.99,12.38,>=5,Validation cohort
+819,58,Female,NA,NA,70.1,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,0.86,<1.96,14.65,>=5,Validation cohort
+1045,27,Female,NA,NA,55.7,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.5,<5.7,1.82,<1.96,1.81,<5,Validation cohort
+1077,38,Female,NA,NA,46.5,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.2,<5.7,1.08,<1.96,17.48,>=5,Validation cohort
+1100,49,Male,NA,NA,62.4,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6.1,5.7 to 6.4,1.18,<1.96,10.23,>=5,Validation cohort
+1220,68,Male,NA,NA,44.5,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.3,<5.7,2.34,1.96 to 2.99,16.65,>=5,Validation cohort
+1251,38,Female,NA,NA,60.5,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.8,5.7 to 6.4,3.13,>=3,7.34,>=5,Validation cohort
+1264,57,Female,NA,NA,50.2,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.5,<5.7,3.32,>=3,2.86,<5,Validation cohort
+1274,62,Male,NA,NA,84.8,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.8,5.7 to 6.4,1.05,<1.96,19.51,>=5,Validation cohort
+1310,49,Female,NA,NA,85.3,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.7,5.7 to 6.4,2.31,1.96 to 2.99,13.45,>=5,Validation cohort
+1327,43,Male,NA,NA,52.3,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.7,5.7 to 6.4,2.13,1.96 to 2.99,7.91,>=5,Validation cohort
+1660,64,Male,NA,NA,83,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.5,<5.7,1.3,<1.96,3.21,<5,Validation cohort
+1662,51,Female,NA,NA,77.7,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.5,<5.7,0.68,<1.96,6.55,>=5,Validation cohort
+1664,40,Female,NA,NA,48.8,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.5,<5.7,0.73,<1.96,14.83,>=5,Validation cohort
+1666,56,Male,NA,NA,71.6,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.5,<5.7,0.8,<1.96,10.48,>=5,Validation cohort
+1976,54,Female,NA,NA,74,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,3.37,>=3,32.83,>=5,Validation cohort
+1989,57,Female,NA,NA,53.8,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),6.1,5.7 to 6.4,2.63,1.96 to 2.99,11.84,>=5,Validation cohort
+1993,57,Female,NA,NA,59.3,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.9,5.7 to 6.4,1.36,<1.96,14.56,>=5,Validation cohort
+2015,67,Female,NA,NA,61.8,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.9,5.7 to 6.4,2.26,1.96 to 2.99,20.02,>=5,Validation cohort
+2016,67,Female,NA,NA,63.9,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.5,<5.7,2.14,1.96 to 2.99,16.39,>=5,Validation cohort
+2036,38,Male,NA,NA,40.7,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.8,5.7 to 6.4,0.81,<1.96,12.05,>=5,Validation cohort
+2133,30,Female,NA,NA,54.9,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.3,<5.7,2.61,1.96 to 2.99,1.32,<5,Validation cohort
+2136,55,Male,NA,NA,43.2,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.2,<5.7,1.47,<1.96,13.54,>=5,Validation cohort
+2139,23,Male,NA,NA,43.5,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.4,<5.7,1.31,<1.96,13.81,>=5,Validation cohort
+2142,30,Male,NA,NA,80.3,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5,<5.7,1.85,<1.96,9.53,>=5,Validation cohort
+2148,57,Female,NA,NA,70.5,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6.1,5.7 to 6.4,1.52,<1.96,5.87,>=5,Validation cohort
+2149,55,Female,NA,NA,46.3,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.2,<5.7,1.59,<1.96,14.38,>=5,Validation cohort
+2152,33,Female,NA,NA,84.5,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.1,<5.7,0.65,<1.96,4.24,<5,Validation cohort
+2153,36,Male,NA,NA,43.6,Inappropriate,Normal,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.5,<5.7,0.99,<1.96,15.31,>=5,Validation cohort
+2156,53,Female,NA,NA,81.4,Excellent,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.3,<5.7,1.34,<1.96,15.75,>=5,Validation cohort
+2160,31,Female,NA,NA,57.1,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.1,<5.7,2.53,1.96 to 2.99,3.66,<5,Validation cohort
+2161,61,Female,NA,NA,50.4,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.9,5.7 to 6.4,3.48,>=3,18.11,>=5,Validation cohort
+2162,24,Male,NA,NA,51,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.2,<5.7,1.53,<1.96,4.52,<5,Validation cohort
+2163,51,Female,NA,NA,64.9,Good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.6,<5.7,2.1,1.96 to 2.99,0.77,<5,Validation cohort
+2164,67,Female,NA,NA,76.7,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5.7,5.7 to 6.4,0.69,<1.96,18.33,>=5,Validation cohort
+2166,57,Female,NA,NA,76.2,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),6.1,5.7 to 6.4,1.56,<1.96,4.31,<5,Validation cohort
+2167,66,Female,NA,NA,57.7,Acceptable,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),6,5.7 to 6.4,1.96,1.96 to 2.99,15.77,>=5,Validation cohort
+2170,51,Male,NA,NA,72.9,Very good,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Good HEI (> 61),5,<5.7,1.69,<1.96,11.41,>=5,Validation cohort
+2171,64,Female,NA,NA,31.4,Inappropriate,Overweight/Obesity,NA,NA,NA,NA,NA,NA,Poor HEI (< 61),5.9,5.7 to 6.4,1.29,<1.96,30.76,>=5,Validation cohort
