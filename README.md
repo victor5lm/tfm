@@ -10,9 +10,36 @@ This repository contains all scripts and auxiliary data used to analyse metageno
 
 ## Data directory
 
-This directory contains all files used for the training of all Machine Learning classifiers, for the generation of both heatmaps shown in the TFM Thesis and for the plotting of all figures shown in the same document.
+This directory contains all files used for the training of all Machine Learning classifiers, for the generation of both heatmaps shown in the TFM Thesis and for the plotting of all figures shown in the same document. These are:
 
-- `data_clr_txt`: text file
+- One directory called `importances_HPF`. Six files are stored here:
+    - `imp_caret_gbm.csv`
+    - `imp_caret_rf.csv`
+    - `imp_caret_svm.csv`
+    - `imp_mikropml_rf.csv`
+    - `imp_mikropml_svm.csv`
+    - `imp_mikropml_xgbtree.csv`
+
+- One directory called `importances_HEI`. Six files are stored here:
+    - `imp_caret_gbm_hei.csv`
+    - `imp_caret_rf_hei.csv`
+    - `imp_caret_svm_hei.csv`
+    - `imp_mikropml_rf_hei.csv`
+    - `imp_mikropml_svm_hei.csv`
+    - `imp_mikropml_xgbtree_hei.csv`
+
+- `class_hei_groups.tsv`
+- `class_hpf_groups.tsv`
+- `data_clr.tsv`
+- `data_clr_hei.csv`
+- `data_clr_hpf.tsv`
+- `filtered_table.qza`
+- `full_data_population_tables.csv`
+- `metadata_study_cohort.csv`
+- `metadata_validation_cohort.csv`
+- `metaphlan_abundances_validation_cohort.csv`
+- `rooted-tree.qza`
+- `taxonomy.qza`
 
 ## Files for heatmap construction
 
