@@ -49,7 +49,7 @@ library(dplyr)
 # Next, we create the phyloseq object
 
     # We import the metadata
-    metadata_val_v1 <- read.csv('DATA/metadatos_ai4food_v1.csv')
+    metadata_val_v1 <- read.csv('DATA/metadata_validation_cohort.csv')
     # Next, we indicate the rownames
     row.names(metadata_val_v1) <- metadata_val_v1$id_voluntario
     sample.val_v1 <- sample_data(metadata_val_v1)
@@ -57,7 +57,7 @@ library(dplyr)
     +                                      metadata_val_v1$id_voluntario)
 
     # We import MetaPhlAn relative abundances table
-    abundance_val_v1 <- read_csv("DATA/abundancias_metaphlan_ai4food_v1.csv")
+    abundance_val_v1 <- read_csv("DATA/metaphlan_abundances_validation_cohort.csv")
     rownames(abundance_val_v1) <- abundance_val_v1$clade_name
     abundances.val_nocladename <- abundance_val_v1 %>% select(-c(clade_name))
     rownames(abundances.val_nocladename) <- abundance_val_v1$clade_name

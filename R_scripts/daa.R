@@ -14,16 +14,16 @@ library(phyloseq)
 
     ## First, we need to transform groups so that spaces
     ## are "_", otherwise DESeq2 will not work
-    phy_gen_daa <- sample_data(phy_gen)$`Highly processed food consumption` <- gsub(" ","_",sample_data(phy_gen)$`Highly processed food consumption`)
+    phy_gen_daa <- sample_data(phy_gen)$HPF_group <- gsub(" ","_",sample_data(phy_gen)$HPF_group)
     phygen_prev <- subset_samples(phy_gen_daa)
 
     ## Removal of all taxa whose total number of counts is lower or equal to 10
     phygen_prev <- prune_taxa(rowSums(otu_table(phygen_prev)) >= 10, phygen_prev)
-    phygen_deseq <- phyloseq_to_deseq2(phygen_prev, ~ `Highly processed food consumption`)
+    phygen_deseq <- phyloseq_to_deseq2(phygen_prev, ~ HPF_group)
 
     ## Execution of DESeq2 for the differential abundance analysis
     phygen_deseq <- DESeq(phygen_deseq, test = "Wald", fitType = "parametric")
-    res_phygen <- results(phygen_deseq, cooksCutoff = FALSE, contrast = c("Highly processed food consumption", "Low_HPF_consumption_(<_15_%_g/day)", "High_HPF_consumption_(>_15_%_g/day)"))
+    res_phygen <- results(phygen_deseq, cooksCutoff = FALSE, contrast = c("HPF_group", "Low_HPF_consumption", "High_HPF_consumption"))
     alpha <- 0.05
 
     ## Selection of taxa whose pvalue is below 0.05
@@ -58,16 +58,16 @@ library(phyloseq)
 
     ## First, we need to transform groups so that spaces
     ## are "_", otherwise DESeq2 will not work
-    phy_gen_daa_hei <- sample_data(phy_gen)$group_HEI <- gsub(" ", "_", sample_data(phy_gen)$group_HEI)
+    phy_gen_daa_hei <- sample_data(phy_gen)$HEI_group <- gsub(" ", "_", sample_data(phy_gen)$HEI_group)
     phygen_prev_hei <- subset_samples(phy_gen_daa_hei)
 
     ## Removal of all taxa whose total number of counts is lower or equal to 10
     phygen_prev_hei <- prune_taxa(rowSums(otu_table(phygen_prev_hei)) >= 10, phygen_prev_hei)
-    phygen_deseq_hei <- phyloseq_to_deseq2(phygen_prev_hei, ~ group_HEI)
+    phygen_deseq_hei <- phyloseq_to_deseq2(phygen_prev_hei, ~ HEI_group)
 
     ## Execution of DESeq2 for the differential abundance analysis
     phygen_deseq_hei <- DESeq(phygen_deseq_hei, test = "Wald", fitType = "parametric")
-    res_phygen_hei <- results(phygen_deseq_hei, cooksCutoff = FALSE, contrast = c("group_HEI", "Good_HEI_(>_61)", "Poor_HEI_(<_61)"))
+    res_phygen_hei <- results(phygen_deseq_hei, cooksCutoff = FALSE, contrast = c("HEI_group", "Good_HEI", "Poor_HEI"))
     alpha <- 0.05
     
     ## Selection of taxa whose pvalue is below 0.05
@@ -102,16 +102,16 @@ library(phyloseq)
 
     ## First, we need to transform groups so that spaces
     ## are "_", otherwise DESeq2 will not work
-    phy_gen_daa_hei_val <- sample_data(phy_gen_val_abs)$group_HEI <- gsub(" ", "_", sample_data(phy_gen_val_abs)$group_HEI)
+    phy_gen_daa_hei_val <- sample_data(phy_gen_val_abs)$HEI_group <- gsub(" ", "_", sample_data(phy_gen_val_abs)$HEI_group)
     phygen_prev_hei_val <- subset_samples(phy_gen_daa_hei_val)
 
     ## Removal of all taxa whose total number of counts is lower or equal to 10
     phygen_prev_hei_val <- prune_taxa(rowSums(otu_table(phygen_prev_hei_val)) >= 10, phygen_prev_hei_val)
-    phygen_deseq_val <- phyloseq_to_deseq2(phygen_prev_hei_val, ~ group_HEI)
+    phygen_deseq_val <- phyloseq_to_deseq2(phygen_prev_hei_val, ~ HEI_group)
     
     ## Execution of DESeq2 for the differential abundance analysis
     phygen_deseq_val <- DESeq(phygen_deseq_val, test = "Wald", fitType = "parametric")
-    res_phygen_val <- results(phygen_deseq_val, cooksCutoff = FALSE, contrast = c("group_HEI", "Good_HEI_(>_61)", "Poor_HEI_(<_61)"))
+    res_phygen_val <- results(phygen_deseq_val, cooksCutoff = FALSE, contrast = c("HEI_group", "Good_HEI", "Poor_HEI"))
     alpha <- 0.05
 
     ## Selection of taxa whose pvalue is below 0.05
