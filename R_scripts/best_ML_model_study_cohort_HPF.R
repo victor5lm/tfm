@@ -72,9 +72,9 @@ groups_imp <- as.data.frame(groups_imp)
 a_imp <- cbind(a_imp, groups_imp$groups_imp)
 
 a_imp_ordered <- a_imp[order(a_imp$"groups_imp$groups_imp"),]
-groups_for_pheatmap_genuses <- read.csv("heatmap_files/additional_files_hpf_classification/groups_for_pheatmap_genuses.csv")
-groups_for_pheatmap <- read.csv("heatmap_files/additional_files_hpf_classification/groups_for_pheatmap.csv")
-abunda_clr_pheatmap <- read.csv("heatmap_files/additional_files_hpf_classification/abundancias_clr_para_pheatmap.csv")
+groups_for_pheatmap_genuses <- read.csv("heatmap_files/additional_files_hpf_classification/groups_for_heatmap_genuses.csv")
+groups_for_pheatmap <- read.csv("heatmap_files/additional_files_hpf_classification/groups_for_heatmap.csv")
+abunda_clr_pheatmap <- read.csv("heatmap_files/additional_files_hpf_classification/clr_abundances_for_heatmap.csv")
 rownames(abunda_clr_pheatmap) <- abunda_clr_pheatmap$Sample
 abunda_clr_pheatmap$Sample <- NULL
 abunda_clr_pheatmap_matrix <- as.matrix(abunda_clr_pheatmap)

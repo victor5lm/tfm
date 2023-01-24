@@ -60,9 +60,9 @@ table_imp_mikropml_rf_for_pheatmap <- cbind(table_imp_mikropml_rf,c(1,1,1,1,0,0,
 colnames(table_imp_mikropml_rf_for_pheatmap)[4] <- "groups_imp$groups_imp"
 table_imp_mikropml_rf_for_pheatmap <- table_imp_mikropml_rf_for_pheatmap[order(table_imp_mikropml_rf_for_pheatmap$`groups_imp$groups_imp`),]
                                             
-groups_for_pheatmap_genuses <- read.csv("heatmap_files/additional_files_hei_classification/groups_for_pheatmap_genuses.csv")
-groups_for_pheatmap <- read.csv("heatmap_files/additional_files_hei_classification/groups_for_pheatmap.csv")
-abunda_clr_pheatmap <- read.csv("heatmap_files/additional_files_hei_classification/abundancias_clr_para_pheatmap.csv")
+groups_for_pheatmap_genuses <- read.csv("heatmap_files/additional_files_hei_classification/groups_for_heatmap_genuses_hei.csv")
+groups_for_pheatmap <- read.csv("heatmap_files/additional_files_hei_classification/groups_for_heatmap_hei.csv")
+abunda_clr_pheatmap <- read.csv("heatmap_files/additional_files_hei_classification/clr_abundances_for_heatmap_hei.csv")
 rownames(abunda_clr_pheatmap) <- abunda_clr_pheatmap$Sample
 abunda_clr_pheatmap$Sample <- NULL
 abunda_clr_pheatmap_matrix <- as.matrix(abunda_clr_pheatmap)

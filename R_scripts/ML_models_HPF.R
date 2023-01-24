@@ -18,7 +18,7 @@ if (!require("mikropml")) {
     ## For caret-based models
 
         ## classes file
-        class_ml <- read.table('DATA/class_groups.tsv',
+        class_ml <- read.table('DATA/class_hpf_groups.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
 
@@ -52,7 +52,7 @@ if (!require("mikropml")) {
 
     ## For mikropml-based models
 
-        data_complete <- read.table('DATA/data_clr_complete.tsv',
+        data_complete <- read.table('DATA/data_clr_hpf.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
         # Removal of correlated variables:

@@ -26,7 +26,7 @@ if (!require("mikropml")) {
         class.bi <- factor(class_ml$class)
 
         ## relative abundances table:
-        data_ml <- read.table('DATA/data_clr_hei.tsv',
+        data_ml <- read.table('DATA/data_clr.tsv',
                             header = TRUE, sep = '\t', # skip = 1,
                             row.names = 1)
 
@@ -52,9 +52,7 @@ if (!require("mikropml")) {
 
     ## For mikropml-based models
 
-        data_complete_hei_groups_rf <- read.table('DATA/data_clr_complete_hei_groups.tsv',
-                            header = TRUE, sep = '\t', # skip = 1,
-                            row.names = 1)
+        data_complete_hei_groups_rf <- read.csv('DATA/data_clr_hei.csv')
         descrCorr <- cor(data_complete_hei_groups_rf)
         highCorr <- findCorrelation(descrCorr, 0.90)
         data_ml.uncor_mikropml <- data_complete_hei_groups_rf[, -highCorr]

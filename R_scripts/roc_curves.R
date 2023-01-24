@@ -84,21 +84,21 @@ library(ggpubr)
         # RANDOM FOREST -----
 
         pred_caret_rf <- predict(get_best_model(originals_caret), testDescr, type = "prob")
-        roc_caret_rf <- roc(testClass.bi, pred_caret_rf$"Low_HPF")
+        roc_caret_rf <- roc(testClass.bi, pred_caret_rf$"Low_HPF_consumption")
         my.roc_caret_rf <- list("RF (caret)" = roc_caret_rf)
         plot_roc_caret_rf <- roc.plot(my.roc_caret_rf, "", p.ci = TRUE, shuffle = FALSE)
 
         # STOCHASTIC GRADIENT BOOSTING -----
 
         pred_caret_gbm <- predict(fit_gbm, testDescr, type = "prob")
-        roc_caret_gbm <- roc(testClass.bi, pred_caret_gbm$"Low_HPF")
+        roc_caret_gbm <- roc(testClass.bi, pred_caret_gbm$"Low_HPF_consumption")
         my.roc_caret_gbm <- list("GBM (caret)" = roc_caret_gbm)
         plot_roc_caret_gbm <- roc.plot(my.roc_caret_gbm, "", p.ci = TRUE, shuffle = FALSE)
 
         # RBF-KERNEL SVC -----
 
         pred_caret_svm <- predict(svm_model, testDescr, type = "prob")
-        roc_caret_svm <- roc(testClass.bi, pred_caret_svm$"Low_HPF")
+        roc_caret_svm <- roc(testClass.bi, pred_caret_svm$"Low_HPF_consumption")
         my.roc_caret_svm <- list("SVC (caret)" = roc_caret_svm)
         plot_roc_caret_svm <- roc.plot(my.roc_caret_svm, "", p.ci = TRUE, shuffle = FALSE)
 
@@ -107,21 +107,21 @@ library(ggpubr)
         # RANDOM FOREST -----
 
         pred_mikropml_rf <- predict(originals_mikropml$`17`$trained_model, originals_mikropml$`17`$test_data, type = "prob")
-        roc_mikropml_rf <- roc(as.factor(originals_mikropml$`17`$test_data$HPF_Group), pred_mikropml_rf$"Low_HPF")
+        roc_mikropml_rf <- roc(as.factor(originals_mikropml$`17`$test_data$HPF_group), pred_mikropml_rf$"Low_HPF_consumption")
         my.roc_mikropml_rf <- list("RF (mikropml)" = roc_mikropml_rf)
         plot_roc_mikropml_rf <- roc.plot(my.roc_mikropml_rf, "", p.ci = TRUE, shuffle = FALSE)
 
         # EXTREME GRADIENT BOOSTING -----
 
         pred_mikropml_xgbtree <- predict(results_xgbtree$trained_model, results_xgbtree$test_data, type = "prob")
-        roc_mikropml_xgbtree <- roc(as.factor(results_xgbtree$test_data$HPF_Group), pred_mikropml_xgbtree$"Low_HPF")
+        roc_mikropml_xgbtree <- roc(as.factor(results_xgbtree$test_data$HPF_group), pred_mikropml_xgbtree$"Low_HPF_consumption")
         my.roc_mikropml_xgbtree <- list("XGBTREE (mikropml)" = roc_mikropml_xgbtree)
         plot_roc_mikropml_xgbtree <- roc.plot(my.roc_mikropml_xgbtree, "", p.ci = TRUE, shuffle = FALSE)
 
         # RBF-KERNEL SVC -----
 
         pred_mikropml_svm <- predict(results_svm$trained_model, results_svm$test_data, type = "prob")
-        roc_mikropml_svm <- roc(as.factor(results_svm$test_data$HPF_Group), pred_mikropml_svm$"Low_HPF")
+        roc_mikropml_svm <- roc(as.factor(results_svm$test_data$HPF_group), pred_mikropml_svm$"Low_HPF_consumption")
         my.roc_mikropml_svm <- list("SVC (mikropml)" = roc_mikropml_svm)
         plot_roc_mikropml_svm <- roc.plot(my.roc_mikropml_svm, "", p.ci = TRUE, shuffle = FALSE)
 
@@ -159,21 +159,21 @@ ggarrange(plot_roc_caret_rf, plot_roc_mikropml_rf, plot_roc_caret_gbm, plot_roc_
         # RANDOM FOREST -----
 
         pred_mikropml_rf_hei <- predict(originals_mikropml$`88`$trained_model, originals_mikropml$`88`$test_data, type = "prob")
-        roc_mikropml_rf_hei <- roc(as.factor(originals_mikropml$`88`$test_data$HEI_Group), pred_mikropml_rf_hei$"Good_HEI")
+        roc_mikropml_rf_hei <- roc(as.factor(originals_mikropml$`88`$test_data$HEI_group), pred_mikropml_rf_hei$"Good_HEI")
         my.roc_mikropml_rf_hei <- list("RF (mikropml)" = roc_mikropml_rf_hei)
         plot_roc_mikropml_rf_hei <- roc.plot(my.roc_mikropml_rf_hei, "", p.ci = TRUE, shuffle = FALSE)
 
         # EXTREME GRADIENT BOOSTING -----
 
         pred_mikropml_xgbtree_hei <- predict(results_xgbtree_hei$trained_model, results_xgbtree_hei$test_data, type = "prob")
-        roc_mikropml_xgbtree_hei <- roc(as.factor(results_xgbtree_hei$test_data$HEI_Group), pred_mikropml_xgbtree_hei$"Good_HEI")
+        roc_mikropml_xgbtree_hei <- roc(as.factor(results_xgbtree_hei$test_data$HEI_group), pred_mikropml_xgbtree_hei$"Good_HEI")
         my.roc_mikropml_xgbtree_hei <- list("XGBTREE (mikropml)" = roc_mikropml_xgbtree_hei)
         plot_roc_mikropml_xgbtree_hei <- roc.plot(my.roc_mikropml_xgbtree_hei, "", p.ci = TRUE, shuffle = FALSE)
 
         # RBF-KERNEL SVC -----
 
         pred_mikropml_svm_hei <- predict(results_svm_hei$trained_model, results_svm_hei$test_data, type = "prob")
-        roc_mikropml_svm_hei <- roc(as.factor(results_svm_hei$test_data$HEI_Group), pred_mikropml_svm_hei$"Good_HEI")
+        roc_mikropml_svm_hei <- roc(as.factor(results_svm_hei$test_data$HEI_group), pred_mikropml_svm_hei$"Good_HEI")
         my.roc_mikropml_svm_hei <- list("SVC (mikropml)" = roc_mikropml_svm_hei)
         plot_roc_mikropml_svm_hei <- roc.plot(my.roc_mikropml_svm_hei, "", p.ci = TRUE, shuffle = FALSE)
 

@@ -48,28 +48,28 @@ tse.list <- lapply(names(tse.list), function(x){
 })
 names(tse.list) <- c("PYM")
 df_alpha <- as.data.frame(colData(tse.list$PYM)) %>%
-    select(chao1, shannon, simpson, Grupo_HPF)
+    select(chao1, shannon, simpson, HPF_group)
 counter <<- 0
 graphs_alpha <-lapply(df_alpha[ ,c("chao1", "shannon", "simpson")], 
                       function(a) 
                       {counter <<- counter + 1
-                      ggplot(df_alpha, aes(x = Grupo_HPF, y = a)) +
-                          geom_boxplot(aes(fill = Grupo_HPF), 
+                      ggplot(df_alpha, aes(x = HPF_group, y = a)) +
+                          geom_boxplot(aes(fill = HPF_group), 
                                        alpha=.5,
                                        outlier.shape = NA) +
-                          geom_signif(comparisons = list(c("Low HPF consumption", "High HPF consumption")),
+                          geom_signif(comparisons = list(c("Low_HPF_consumption", "High_HPF_consumption")),
                                       test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                           geom_jitter(width = 0.2,
-                                      aes(colour = Grupo_HPF), size = 1.5) +
+                                      aes(colour = HPF_group), size = 1.5) +
                           ylab(gsub('_', ' ', colnames(df_alpha)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
 ggarrange(plotlist = graphs_alpha,
           common.legend = TRUE, legend = "bottom",
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test_alpha_hpf <- bind_rows(pairwise_wilcox_test(df_alpha, chao1 ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_alpha, shannon ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_alpha, simpson ~ Grupo_HPF)) %>% 
+wil.test_alpha_hpf <- bind_rows(pairwise_wilcox_test(df_alpha, chao1 ~ HPF_group),
+                      pairwise_wilcox_test(df_alpha, shannon ~ HPF_group),
+                      pairwise_wilcox_test(df_alpha, simpson ~ HPF_group)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 
@@ -105,7 +105,7 @@ graphs_hei <-lapply(df_hei[ ,c("chao1", "shannon", "simpson")],
                                      outlier.shape = NA) +
                         scale_fill_brewer(palette="Paired") +
                         scale_color_brewer(palette="Paired") +
-                        geom_signif(comparisons = list(c("Good HEI", "Poor HEI")),
+                        geom_signif(comparisons = list(c("Good_HEI", "Poor_HEI")),
                                     test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                         geom_jitter(width = 0.2,
                                     aes(colour = Grupo_HEI), size = 1.5) +
@@ -115,9 +115,9 @@ ggarrange(plotlist = graphs_hei,
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test_alpha_hei <- bind_rows(pairwise_wilcox_test(df_hei, chao1 ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_hei, shannon ~ Grupo_HPF),
-                      pairwise_wilcox_test(df_hei, simpson ~ Grupo_HPF)) %>% 
+wil.test_alpha_hei <- bind_rows(pairwise_wilcox_test(df_hei, chao1 ~ HPF_group),
+                      pairwise_wilcox_test(df_hei, shannon ~ HPF_group),
+                      pairwise_wilcox_test(df_hei, simpson ~ HPF_group)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 
@@ -142,30 +142,30 @@ tse.list_val <- lapply(names(tse.list_val), function(x){
 })
 names(tse.list_val) <- c("PYM")
 df_hei_val <- as.data.frame(colData(tse.list_val$PYM)) %>%
-    select(chao1, shannon, simpson, group_HEI)
+    select(chao1, shannon, simpson, HEI_group)
 counter <<- 0
 graphs_hei_val <-lapply(df_hei_val[ ,c("chao1", "shannon", "simpson")], 
                     function(a) 
                     {counter <<- counter + 1
-                    ggplot(df_hei_val, aes(x = group_HEI, y = a)) +
-                        geom_boxplot(aes(fill = group_HEI), 
+                    ggplot(df_hei_val, aes(x = HEI_group, y = a)) +
+                        geom_boxplot(aes(fill = HEI_group), 
                                      alpha=.5,
                                      outlier.shape = NA) +
                         scale_fill_brewer(palette="Dark2")+
                         scale_color_brewer(palette="Dark2")+
-                        geom_signif(comparisons = list(c("Good HEI", "Poor HEI")),
+                        geom_signif(comparisons = list(c("Good_HEI", "Poor_HEI")),
                                     test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                         geom_jitter(width = 0.2,
-                                    aes(colour = group_HEI), size = 1.5) +
+                                    aes(colour = HEI_group), size = 1.5) +
                         ylab(gsub('_', ' ', colnames(df_hei)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
 ggarrange(plotlist = graphs_hei_val,
           common.legend = TRUE, legend = "bottom",
           align = "hv", ncol = 3)
 
 ## Wilcoxon tests for statistical differences between both groups
-wil.test_alpha_hei_val <- bind_rows(pairwise_wilcox_test(df_hei_val, chao1 ~ group_HEI),
-                      pairwise_wilcox_test(df_hei_val, shannon ~ group_HEI),
-                      pairwise_wilcox_test(df_hei_val, simpson ~ group_HEI)) %>% 
+wil.test_alpha_hei_val <- bind_rows(pairwise_wilcox_test(df_hei_val, chao1 ~ HEI_group),
+                      pairwise_wilcox_test(df_hei_val, shannon ~ HEI_group),
+                      pairwise_wilcox_test(df_hei_val, simpson ~ HEI_group)) %>% 
 adjust_pvalue(method = "BH") %>%
 add_significance()
 
@@ -194,7 +194,7 @@ adonis_calculator <- function(dlist, study_pseq) {
     
     results.group <- lapply(names(dlist), 
                             function(x) {
-                                z <- adonis2(dlist[[x]] ~ Grupo_HPF, 
+                                z <- adonis2(dlist[[x]] ~ HPF_group, 
                                             data = data.frame(sample_data(study_pseq)))
                                 return(as.data.frame(z))
                             })
@@ -208,9 +208,9 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
         p <- NULL
         
         p <- plot_ordination(study_pseq, pcoa_list[[i]], 
-                             color = "Grupo_HPF") + 
+                             color = "HPF_group") + 
             geom_point(size = 2) +
-            stat_ellipse(aes(group = Grupo_HPF), linetype = 2) +
+            stat_ellipse(aes(group = HPF_group), linetype = 2) +
             theme_bw() +
             theme(plot.title = element_text(face = 'bold', size = 16),
                   axis.title = element_text(size = 14),
@@ -350,7 +350,7 @@ adonis_calculator <- function(dlist, study_pseq) {
     
     results.group <- lapply(names(dlist), 
                             function(x) {
-                                z <- adonis2(dlist[[x]] ~ group_HEI, 
+                                z <- adonis2(dlist[[x]] ~ HEI_group, 
                                              data = data.frame(sample_data(study_pseq)))
                                 return(as.data.frame(z))
                             })
@@ -364,9 +364,9 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
         p <- NULL
         
         p <- plot_ordination(study_pseq, pcoa_list[[i]], 
-                             color = "group_HEI") + 
+                             color = "HEI_group") + 
             geom_point(size = 2) +
-            stat_ellipse(aes(group = group_HEI), linetype = 2) +
+            stat_ellipse(aes(group = HEI_group), linetype = 2) +
             theme_bw() +
             theme(plot.title = element_text(face = 'bold', size = 16),
                   axis.title = element_text(size = 14),

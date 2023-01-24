@@ -67,7 +67,7 @@ library(stats)
     # where columns will be taxa and rows will be sample names
     tb_clr <- psmelt(phy_gen_comp_clr)
     tb_clr_relevant_stuff <- cbind(tb_clr$SampleID,tb_clr$Abundance,tb_clr$Genus)
-    colnames(tb_clr_relevant_stuff) <- c("SampleID","Abundance","Genus")
+    colnames(tb_clr_relevant_stuff) <- c("SampleID", "Abundance", "Genus")
     df_spread <- as_tibble(tb_clr_relevant_stuff) %>% spread(key = Genus, value = Abundance)
 
 # Once we have done the previous commands,

@@ -1,61 +1,61 @@
-SampleID,Age,Sex,P_sQ_HPF,Eq_sQ_HPF,HEI,HEI classification,BMI,Physical activity,Wine consumption,Beer consumption,Liquor consumption,Tobacco consumption,Highly processed food consumption,group_HEI
-PYM000,33,Female,4,22.4,70.5,Very good,Normal,Low,7,2,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM001,38,Female,2,15,59.3,Acceptable,Normal,Low,2,4,4,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM101,58,Female,5,26.1,66.2,Good,Normal,Low,4,7,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM102,55,Female,5,26.1,67.8,Good,Overweight/Obesity,Low,4,4,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM103,57,Female,3,18.7,73.4,Very good,Overweight/Obesity,Low,1,7,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM104,56,Female,6,29.8,48.9,Inappropriate,Overweight/Obesity,Low,4,4,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM107,51,Female,1,11.3,64.2,Good,Normal,Moderate,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM110,57,Female,3,18.7,75.3,Very good,Normal,High,3,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM111,56,Female,2,15,55.9,Acceptable,Normal,High,1,4,1,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM112,44,Female,2,15,59.4,Acceptable,Normal,Low,4,6,1,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM113,55,Female,2,15,65,Good,Overweight/Obesity,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM201,53,Female,5,26.1,76.2,Very good,Overweight/Obesity,Moderate,4,7,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM202,50,Female,2,15,68.3,Good,Overweight/Obesity,Moderate,2,2,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM203,28,Female,1,11.3,62.1,Good,Normal,Low,2,5,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM204,55,Female,6,29.8,41.5,Inappropriate,Overweight/Obesity,High,2,3,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM205,23,Female,2,15,68,Good,Normal,Moderate,4,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM208,25,Female,3,18.7,58.8,Acceptable,Normal,High,1,4,1,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM209,28,Female,2,15,75.4,Very good,Normal,High,4,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM210,26,Female,7,33.5,63.1,Good,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM211,21,Female,6,29.8,45.6,Inappropriate,Normal,High,2,5,2,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM301,38,Female,2,15,69.2,Good,Overweight/Obesity,Low,4,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM302,42,Female,4,22.4,77,Very good,Overweight/Obesity,Moderate,4,2,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM303,53,Female,2,15,56.2,Acceptable,Overweight/Obesity,Low,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM305,38,Male,3,18.7,67.7,Good,Normal,High,2,2,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM306,32,Female,3,18.7,69.9,Good,Normal,High,4,2,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM308,29,Female,1,11.3,74.4,Very good,Normal,Moderate,2,2,4,Y,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM309,31,Female,2,15,63,Good,Normal,Moderate,5,2,4,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM310,23,Female,4,22.4,55.2,Acceptable,Normal,Moderate,7,5,4,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM311,21,Male,4,22.4,52.7,Acceptable,Overweight/Obesity,High,1,4,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM402,35,Male,5,26.1,67.5,Good,Overweight/Obesity,Moderate,4,7,4,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM403,26,Male,6,29.8,45.6,Inappropriate,Overweight/Obesity,High,4,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM404,32,Male,6,29.8,46.5,Inappropriate,Overweight/Obesity,High,4,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM405,31,Female,6,29.8,47.9,Inappropriate,Normal,High,7,3,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM406,46,Female,3,18.7,83.4,Excellent,Normal,High,6,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM407,36,Female,1,11.3,70.6,Very good,Normal,Moderate,7,5,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM408,46,Male,4,22.4,55.2,Acceptable,Overweight/Obesity,High,7,5,4,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM410,33,Male,5,26.1,55.3,Acceptable,Normal,Low,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM411,32,Female,2,15,67.5,Good,Normal,High,4,7,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM412,33,Female,1,11.3,75.2,Very good,Normal,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM413,30,Female,4,22.4,52,Acceptable,Normal,Moderate,4,4,1,Y,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM414,27,Female,1,11.3,55,Acceptable,Normal,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM501,35,Female,3,18.7,67.7,Good,Overweight/Obesity,Low,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM502,45,Female,1,11.3,47.2,Inappropriate,Overweight/Obesity,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM503,52,Female,5,26.1,85.6,Excellent,Overweight/Obesity,Moderate,2,2,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM504,36,Male,2,15,47.8,Inappropriate,Normal,High,4,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM506,39,Female,6,29.8,55.5,Acceptable,Normal,Low,7,4,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM507,46,Female,2,15,42,Inappropriate,Normal,Moderate,4,4,4,Y,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM508,34,Female,2,15,53.5,Acceptable,Normal,Moderate,1,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM509,39,Female,1,11.3,74.7,Very good,Normal,Moderate,7,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM511,49,Female,1,11.3,87.5,Excellent,Overweight/Obesity,Moderate,1,4,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM513,34,Female,2,15,69.6,Good,Normal,Moderate,7,2,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM601,32,Female,4,22.4,54.5,Acceptable,Normal,High,1,2,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM604,48,Female,1,11.3,76,Very good,Normal,High,7,2,1,Y,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM605,35,Female,4,22.4,63.7,Good,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM607,32,Female,4,22.4,47.3,Inappropriate,Normal,High,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM608,23,Female,4,22.4,64.6,Good,Normal,High,4,5,1,Y,High HPF consumption (> 15 % g/day),Good HEI (> 61)
-PYM609,49,Male,1,11.3,80.6,Excellent,Overweight/Obesity,High,1,1,1,N,Low HPF consumption (< 15 % g/day),Good HEI (> 61)
-PYM612,25,Female,6,29.8,51.1,Acceptable,Normal,Moderate,1,1,1,N,High HPF consumption (> 15 % g/day),Poor HEI (< 61)
-PYM613,23,Female,1,11.3,41.9,Inappropriate,Normal,Moderate,4,1,1,N,Low HPF consumption (< 15 % g/day),Poor HEI (< 61)
-PYM614,22,Male,3,18.7,77,Very good,Normal,High,1,4,1,N,High HPF consumption (> 15 % g/day),Good HEI (> 61)
+SampleID,Age,Sex,P_sQ_HPF,Eq_sQ_HPF,HEI,HEI classification,BMI,Physical activity,Wine consumption,Beer consumption,Liquor consumption,Tobacco consumption,HPF_group,HEI_group
+PYM000,33,Female,4,22.4,70.5,Very good,Normal,Low,7,2,1,N,High_HPF_consumption,Good_HEI
+PYM001,38,Female,2,15,59.3,Acceptable,Normal,Low,2,4,4,N,Low_HPF_consumption,Poor_HEI
+PYM101,58,Female,5,26.1,66.2,Good,Normal,Low,4,7,1,Y,High_HPF_consumption,Good_HEI
+PYM102,55,Female,5,26.1,67.8,Good,Overweight/Obesity,Low,4,4,1,N,High_HPF_consumption,Good_HEI
+PYM103,57,Female,3,18.7,73.4,Very good,Overweight/Obesity,Low,1,7,1,N,High_HPF_consumption,Good_HEI
+PYM104,56,Female,6,29.8,48.9,Inappropriate,Overweight/Obesity,Low,4,4,1,N,High_HPF_consumption,Poor_HEI
+PYM107,51,Female,1,11.3,64.2,Good,Normal,Moderate,1,1,1,N,Low_HPF_consumption,Good_HEI
+PYM110,57,Female,3,18.7,75.3,Very good,Normal,High,3,1,1,N,High_HPF_consumption,Good_HEI
+PYM111,56,Female,2,15,55.9,Acceptable,Normal,High,1,4,1,Y,Low_HPF_consumption,Poor_HEI
+PYM112,44,Female,2,15,59.4,Acceptable,Normal,Low,4,6,1,Y,Low_HPF_consumption,Poor_HEI
+PYM113,55,Female,2,15,65,Good,Overweight/Obesity,Moderate,1,4,1,N,Low_HPF_consumption,Good_HEI
+PYM201,53,Female,5,26.1,76.2,Very good,Overweight/Obesity,Moderate,4,7,1,N,High_HPF_consumption,Good_HEI
+PYM202,50,Female,2,15,68.3,Good,Overweight/Obesity,Moderate,2,2,4,N,Low_HPF_consumption,Good_HEI
+PYM203,28,Female,1,11.3,62.1,Good,Normal,Low,2,5,4,N,Low_HPF_consumption,Good_HEI
+PYM204,55,Female,6,29.8,41.5,Inappropriate,Overweight/Obesity,High,2,3,4,N,High_HPF_consumption,Poor_HEI
+PYM205,23,Female,2,15,68,Good,Normal,Moderate,4,2,1,N,Low_HPF_consumption,Good_HEI
+PYM208,25,Female,3,18.7,58.8,Acceptable,Normal,High,1,4,1,Y,High_HPF_consumption,Poor_HEI
+PYM209,28,Female,2,15,75.4,Very good,Normal,High,4,2,1,N,Low_HPF_consumption,Good_HEI
+PYM210,26,Female,7,33.5,63.1,Good,Normal,Moderate,1,1,1,N,High_HPF_consumption,Good_HEI
+PYM211,21,Female,6,29.8,45.6,Inappropriate,Normal,High,2,5,2,N,High_HPF_consumption,Poor_HEI
+PYM301,38,Female,2,15,69.2,Good,Overweight/Obesity,Low,4,1,1,N,Low_HPF_consumption,Good_HEI
+PYM302,42,Female,4,22.4,77,Very good,Overweight/Obesity,Moderate,4,2,1,N,High_HPF_consumption,Good_HEI
+PYM303,53,Female,2,15,56.2,Acceptable,Overweight/Obesity,Low,1,1,1,N,Low_HPF_consumption,Poor_HEI
+PYM305,38,Male,3,18.7,67.7,Good,Normal,High,2,2,4,N,High_HPF_consumption,Good_HEI
+PYM306,32,Female,3,18.7,69.9,Good,Normal,High,4,2,4,N,High_HPF_consumption,Good_HEI
+PYM308,29,Female,1,11.3,74.4,Very good,Normal,Moderate,2,2,4,Y,Low_HPF_consumption,Good_HEI
+PYM309,31,Female,2,15,63,Good,Normal,Moderate,5,2,4,N,Low_HPF_consumption,Good_HEI
+PYM310,23,Female,4,22.4,55.2,Acceptable,Normal,Moderate,7,5,4,Y,High_HPF_consumption,Poor_HEI
+PYM311,21,Male,4,22.4,52.7,Acceptable,Overweight/Obesity,High,1,4,4,N,High_HPF_consumption,Poor_HEI
+PYM402,35,Male,5,26.1,67.5,Good,Overweight/Obesity,Moderate,4,7,4,N,High_HPF_consumption,Good_HEI
+PYM403,26,Male,6,29.8,45.6,Inappropriate,Overweight/Obesity,High,4,2,1,N,High_HPF_consumption,Poor_HEI
+PYM404,32,Male,6,29.8,46.5,Inappropriate,Overweight/Obesity,High,4,2,1,N,High_HPF_consumption,Poor_HEI
+PYM405,31,Female,6,29.8,47.9,Inappropriate,Normal,High,7,3,1,N,High_HPF_consumption,Poor_HEI
+PYM406,46,Female,3,18.7,83.4,Excellent,Normal,High,6,1,1,N,High_HPF_consumption,Good_HEI
+PYM407,36,Female,1,11.3,70.6,Very good,Normal,Moderate,7,5,1,N,Low_HPF_consumption,Good_HEI
+PYM408,46,Male,4,22.4,55.2,Acceptable,Overweight/Obesity,High,7,5,4,N,High_HPF_consumption,Poor_HEI
+PYM410,33,Male,5,26.1,55.3,Acceptable,Normal,Low,1,1,1,N,High_HPF_consumption,Poor_HEI
+PYM411,32,Female,2,15,67.5,Good,Normal,High,4,7,1,N,Low_HPF_consumption,Good_HEI
+PYM412,33,Female,1,11.3,75.2,Very good,Normal,High,1,1,1,N,Low_HPF_consumption,Good_HEI
+PYM413,30,Female,4,22.4,52,Acceptable,Normal,Moderate,4,4,1,Y,High_HPF_consumption,Poor_HEI
+PYM414,27,Female,1,11.3,55,Acceptable,Normal,Moderate,1,4,1,N,Low_HPF_consumption,Poor_HEI
+PYM501,35,Female,3,18.7,67.7,Good,Overweight/Obesity,Low,1,1,1,N,High_HPF_consumption,Good_HEI
+PYM502,45,Female,1,11.3,47.2,Inappropriate,Overweight/Obesity,High,1,1,1,N,Low_HPF_consumption,Poor_HEI
+PYM503,52,Female,5,26.1,85.6,Excellent,Overweight/Obesity,Moderate,2,2,1,Y,High_HPF_consumption,Good_HEI
+PYM504,36,Male,2,15,47.8,Inappropriate,Normal,High,4,1,1,N,Low_HPF_consumption,Poor_HEI
+PYM506,39,Female,6,29.8,55.5,Acceptable,Normal,Low,7,4,1,N,High_HPF_consumption,Poor_HEI
+PYM507,46,Female,2,15,42,Inappropriate,Normal,Moderate,4,4,4,Y,Low_HPF_consumption,Poor_HEI
+PYM508,34,Female,2,15,53.5,Acceptable,Normal,Moderate,1,1,1,N,Low_HPF_consumption,Poor_HEI
+PYM509,39,Female,1,11.3,74.7,Very good,Normal,Moderate,7,1,1,N,Low_HPF_consumption,Good_HEI
+PYM511,49,Female,1,11.3,87.5,Excellent,Overweight/Obesity,Moderate,1,4,1,N,Low_HPF_consumption,Good_HEI
+PYM513,34,Female,2,15,69.6,Good,Normal,Moderate,7,2,1,N,Low_HPF_consumption,Good_HEI
+PYM601,32,Female,4,22.4,54.5,Acceptable,Normal,High,1,2,1,N,High_HPF_consumption,Poor_HEI
+PYM604,48,Female,1,11.3,76,Very good,Normal,High,7,2,1,Y,Low_HPF_consumption,Good_HEI
+PYM605,35,Female,4,22.4,63.7,Good,Normal,Moderate,1,1,1,N,High_HPF_consumption,Good_HEI
+PYM607,32,Female,4,22.4,47.3,Inappropriate,Normal,High,1,1,1,N,High_HPF_consumption,Poor_HEI
+PYM608,23,Female,4,22.4,64.6,Good,Normal,High,4,5,1,Y,High_HPF_consumption,Good_HEI
+PYM609,49,Male,1,11.3,80.6,Excellent,Overweight/Obesity,High,1,1,1,N,Low_HPF_consumption,Good_HEI
+PYM612,25,Female,6,29.8,51.1,Acceptable,Normal,Moderate,1,1,1,N,High_HPF_consumption,Poor_HEI
+PYM613,23,Female,1,11.3,41.9,Inappropriate,Normal,Moderate,4,1,1,N,Low_HPF_consumption,Poor_HEI
+PYM614,22,Male,3,18.7,77,Very good,Normal,High,1,4,1,N,High_HPF_consumption,Good_HEI
