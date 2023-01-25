@@ -40,6 +40,7 @@ This directory contains all files used for the training of all Machine Learning 
 - `metaphlan_abundances_validation_cohort.csv`: this .csv table contains the relative abundances table obtained after executing MetaPhlAn4 on the raw reads from the validation cohort.
 - `rooted-tree.qza`: this is one of the QIIME2 artifacts needed to create phyloseq objects from the study cohort necessary for diversity analyses, DAA and ML classifier construction. It is the rooted tree obtained during read processing with QIIME2, MAFFT and FastTree.
 - `taxonomy.qza`: this is one of the QIIME2 artifacts needed to create phyloseq objects from the study cohort necessary for diversity analyses, DAA and ML classifier construction. If transformed into a visualisation file (.qzv), it informs us about the number of samples taken into account, the number of identified features, etc. If transformed into a visualisation file (.qzv), it informs us about the full taxonomy of each identified feature.
+- `test_data_for_validation.csv`: this is a .csv table containing all CLR-transformed abundances for the 200 taxa used for ML training and in relation to the validation cohort. This is the data that will be used as "test data" when asking the most precise ML classifier, for the HEI classification, to predict its HEI classes in the validation procedure.
 
 ## Files for heatmap construction
 
