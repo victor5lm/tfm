@@ -105,7 +105,10 @@ if (!require("mikropml")) {
     }
 
     # Selection of the most precise model based on its accuracy
-    get_best_model(originals_caret) #mtry = 7; ntree = 4
+    get_best_model(originals_caret) # ntree = 7; mtry = 4
+
+    # Feature importances
+    varImp(get_best_model(originals_caret), scale = FALSE)
 
 ## Stochastic Gradient Boosting -----
 
@@ -131,6 +134,9 @@ if (!require("mikropml")) {
                     tuneGrid = gbmGrid,
                     trControl = fitControl_gbm,
                     bag.fraction = 0.6)
+
+    # Feature importances
+    varImp(fit_gbm$finalModel, scale = FALSE)
 
 ## RBF-Kernel SVC -----
 
@@ -159,6 +165,9 @@ if (!require("mikropml")) {
                 trControl = fitControl_svm,
                 tuneGrid = svm_grid)
 
+    # Feature importances
+    varImp(svm_model$finalModel, scale = FALSE)
+
 ## MIKROPML-BASED CLASSIFIERS -----
 
 ## Random Forest -----
@@ -171,7 +180,7 @@ if (!require("mikropml")) {
         print(ntree)
         set.seed(2019)
         results_rf <- run_ml(data_ml.uncor_mikropml, "rf",
-        outcome_colname = "Grupo_HPF",
+        outcome_colname = "HPF_group",
         cross_val = caret::trainControl(method = "LOOCV"),
         training_frac = 0.80, seed = 2019,
         calculate_performance = TRUE, ntree = ntree,
@@ -183,6 +192,9 @@ if (!require("mikropml")) {
 
     originals_mikropml$`17`$performance$AUC
     # 0.8833333
+
+    # Feature importances
+    varImp(originals_mikropml$`17`$trained_model, scale = FALSE)
 
 ## Extreme Gradient Boosting -----
 
@@ -196,12 +208,15 @@ if (!require("mikropml")) {
 
     set.seed(2019)
     results_xgbtree <- run_ml(data_ml.uncor_mikropml, "xgbTree",
-    outcome_colname = "Grupo_HPF",
+    outcome_colname = "HPF_group",
     cross_val = caret::trainControl(method = "LOOCV"),
     training_frac = 0.80, seed = 2019,
     calculate_performance = TRUE,
     hyperparameters = tuning_xgbtree,
     find_feature_importance = TRUE)
+
+    # Feature importances
+    varImp(results_xgbtree$trained_model, scale = FALSE)
 
 ## RBF-Kernel SVC -----
 
@@ -209,10 +224,13 @@ if (!require("mikropml")) {
 
     set.seed(2019)
     results_svm <- run_ml(data_ml.uncor_mikropml, "svmRadial",
-                        outcome_colname = "Grupo_HPF",
+                        outcome_colname = "HPF_group",
                         cv_times = 1,
-                        kfold = 48,
+                        kfold = 48, # 80% of the total number of samples from the study cohort
                         training_frac = 0.8, seed = 2019,
                         calculate_performance = TRUE,
                         hyperparameters = tuning_svm,
                         find_feature_importance = TRUE)
+    
+    # Feature importances
+    varImp(results_svm$trained_model, scale = FALSE)

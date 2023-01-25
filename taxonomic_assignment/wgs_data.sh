@@ -5,7 +5,7 @@ source ~/.bashrc
 # Given all .fq.gz files, we have to check first that
 # all files have been stored correctly
 # by using md5sum, which calculates the 
-# "digital fingerprint" of a file
+# "digital fingerprint" of a file.
 
     for file in $(find -type f); do echo $file; md5sum $file > $file.md5; done
     for file in $(find -type f | grep md5); do cat $file >> md5_after_unzipping.txt ; done
@@ -14,9 +14,9 @@ source ~/.bashrc
 # Several samples were sequenced more than once.
 # Therefore, we need to merge those files linked to the same sample:
 
-    # We need to unzip first our .fq.gz files
+    # We need to unzip first our .fq.gz files.
     gunzip *.gz
-    # Union of .fq files referring to the same sample
+    # Union of .fq files referring to the same sample.
     cat V1_1120_EKDN220029060-1A_H3NKVDSX5_L1_1.fq V1_1120_EKDN220029060-1A_H5J5KDSX5_L4_1.fq > V1_1120_1.fq
     cat V1_1120_EKDN220029060-1A_H3NKVDSX5_L1_2.fq V1_1120_EKDN220029060-1A_H5J5KDSX5_L4_2.fq > V1_1120_2.fq
     cat V1_1251_EKDN220029064-1A_H3YFWDSX5_L2_1.fq V1_1251_EKDN220029064-1A_H5JLKDSX5_L3_1.fq > V1_1251_1.fq
@@ -62,7 +62,7 @@ source ~/.bashrc
 
 # Next, we can execute metaWRAP for the 
 # removal of Illumina adapters, the trimming of
-# low-quality ends and the removal of host contamination
+# low-quality ends and the removal of host contamination.
 
     # Installation
 
@@ -79,8 +79,8 @@ source ~/.bashrc
         bmtool -d hg38.fa -o hg38.bitmask
         srprism mkindex -i hg38.fa -o hg38.srprism
 
-        # The following line is my particular path
-        # The user should indicate here their desired path
+        # The following line is my particular path.
+        # The user should indicate here their desired path.
         export PATH=$PATH:/home/estudiantes/victor/metaWRAP/bin
 
         mamba create -y -n metawrap python=2.7
@@ -95,12 +95,11 @@ source ~/.bashrc
     
     # Execution
 
-        # Please note this is my particular path
-
+        # Please note this is my particular path.
         export PATH=$PATH:/home/estudiantes/victor/metaWRAP/bin
 
-        # File names were long, so they were shortened
-        # This step can be omitted if not necessary
+        # File names were long, so they were shortened.
+        # This step can be omitted if not necessary.
 
         for f in *.fq; do 
             mv "$f" \
@@ -110,8 +109,8 @@ source ~/.bashrc
         # Execution of metaWRAP
 
         # Please note: we need to indicate the path where the .fq files are
-        # And create a new folder (here named "READ_QC")
-        # where FASTQC reports will be stored for each sample
+        # and create a new folder (here named "READ_QC")
+        # where FASTQC reports will be stored for each sample.
             
         for F in RAW_READS/*_1.fq; do R=${F%_*}_2.fastq; BASE=${F##*/}; SAMPLE=${BASE%_*}; metawrap read_qc -1 $F -2 $R -t 1 -o READ_QC/$SAMPLE & done
 
@@ -132,23 +131,23 @@ source ~/.bashrc
     conda create --name mpa -c conda-forge -c bioconda python=3.7 metaphlan
     conda install -c conda-forge -c bioconda metaphlan
     conda activate mpa
-    metaphlan --version #MetaPhlAn version 4.0.2 (22 Sep 2022)
+    metaphlan --version #MetaPhlAn version 4.0.0 (22 Sep 2022)
     
     #Installation of the bowtie2 database
 
-    cd ~/victor # This folder should be changed to the one desired by the user
+    cd ~/victor # This folder should be changed to the one desired by the user.
     metaphlan --install --bowtie2db ~/victor/bowtiedb
 
     # Execution
 
     conda activate mpa
-    metaphlan --version #MetaPhlAn version 4.0.2 (22 Sep 2022)
+    metaphlan --version #MetaPhlAn version 4.0.0 (22 Sep 2022)
 
     cd ./CLEAN_READS #Or the folder where our clean reads are
 
-    touch metaphlan_script.pl # Now, we create a perl script for the MetaPhlAn execution
-    chmod a+x metaphlan_script.pl # to allow its modification
-    vi metaphlan_script.pl # to modify the file
+    touch metaphlan_script.pl # Now, we create a perl script for the MetaPhlAn execution.
+    chmod a+x metaphlan_script.pl # to allow its modification.
+    vi metaphlan_script.pl # to modify the file.
 
     # Now we copy the following text:
 
@@ -173,7 +172,7 @@ source ~/.bashrc
 
     # Finally, we can merge all "profiled_XXX.txt" files
     # obtained after these, where each file
-    # refers to each sample
+    # refers to each sample.
 
     python ~/anaconda3/envs/mpa/bin/merge_metaphlan_tables.py profiled_*.txt > merged_abundance_table.txt
 
@@ -182,10 +181,14 @@ source ~/.bashrc
 # taxonomic assignment, we will transform our SGB-based profiles to
 # GTDB-based profiles:
 
-    # First, we need to execute this command where we have all "profiles"
+    # First, we need to execute this command where we have all "profiles".
+    # The python file used here should be available after the 
+    # installation of MetaPhlAn4.
     for F in $(ls); do sgb_to_gtdb_profile.py -i $F -o gtdb/$F; done
 
-    # Now, where all new GTDB-based profiles are, we execute this:
+    # Now, where all new GTDB-based profiles are, we execute the following command.
+    # The python file used here should be available after the 
+    # installation of MetaPhlAn4.
     merge_metaphlan_tables.py profiled_* -o merged_abundance_table_gtdb.txt --gtdb_profiles
 
 # Now we have a file called "merged_abundance_table_gtdb.txt".

@@ -1,8 +1,8 @@
 # The following R script shows how to draw the graphs in which quantiles made
 # from the validation cohort were plotted, based on several biomarkers
 # related to type 2 diabetes and IR: HbA1c (%), HOMA-IR, adiponectin
-# and also HEI itself. Boxplots for abundances of some differentially
-# abundant taxa among quantiles are plotted, where abundances
+# and also HEI itself. Boxplots for CLR-transformed abundances of some differentially
+# abundant taxa among quantiles are plotted, where CLR-transformed abundances
 # are on the y axis and quantiles are on the x axis.
 
 library(ggplot2)

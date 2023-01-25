@@ -3,6 +3,9 @@
 # we need to create a phyloseq object
 # for the diversity analyses and ML classifier construction
 
+# WARNING: the aforementioned "merged_abundance_table_gtdb.txt" file corresponds to
+# "tfm/DATA/metaphlan_abundances_validation_cohort.csv"!
+
 library(ape)
 library(phyloseq)
 library(microbiome)
@@ -46,15 +49,15 @@ library(dplyr)
     return(res)
     }
 
-# Next, we create the phyloseq object
+# Next, we need to create the phyloseq object
 
-    # We import the metadata
+    # Then, we import the metadata
     metadata_val_v1 <- read.csv('DATA/metadata_validation_cohort.csv')
     # Next, we indicate the rownames
-    row.names(metadata_val_v1) <- metadata_val_v1$id_voluntario
+    row.names(metadata_val_v1) <- metadata_val_v1$SampleID
     sample.val_v1 <- sample_data(metadata_val_v1)
     sample_names(sample.val_v1) <- gsub('^', 'profiled_V1_', 
-    +                                      metadata_val_v1$id_voluntario)
+    +                                      metadata_val_v1$SampleID)
 
     # We import MetaPhlAn relative abundances table
     abundance_val_v1 <- read_csv("DATA/metaphlan_abundances_validation_cohort.csv")

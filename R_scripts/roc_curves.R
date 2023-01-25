@@ -1,5 +1,9 @@
-#This R script shows all commands for the construction of ROC curves
-# for all classifiers shown in the TFM document
+# This R script shows all commands for the construction of ROC curves
+# for all classifiers shown in the TFM document.
+
+# Models used here for the ROC curve generation
+# are the ones detailed in R_scripts/ML_models_HEI.R
+# and R_scripts/ML_models_HPF.R.
 
 library(ggplot2)
 library(pROC)

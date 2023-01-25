@@ -53,7 +53,7 @@ library(stats)
     # First, we need to remove all taxa linked to the Eukaryota kingdom or no kingdom:
     physeq_fil <- subset_taxa(physeq_processed_foods, Kingdom != "Unassigned" & Kingdom != "Eukaryota")
 
-    # Next, we have to agglomerate all taxonomies to the genus level, and we remove NAs:
+    # Next, we have to agglomerate all taxonomies to the genus level, and we also remove NAs:
     phy_gen <- tax_glom(physeq_fil, taxrank = "Genus", NArm = TRUE)
 
     # For beta-diversity calculations, relative abundances will be necessary:

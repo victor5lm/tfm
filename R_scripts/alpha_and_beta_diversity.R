@@ -1,5 +1,5 @@
 # Script for alpha and beta diversity analyses both both cohorts grouped based on HPF consumption 
-# (study cohort) and HEI (both cohorts)
+# (study cohort) and HEI (both cohorts).
 
 # First, we need to import all necessary libraries:
 library(dplyr)
@@ -25,6 +25,7 @@ library(knitr)
 library(car)
 library(stats)
 library(cowplot)
+library(ggsignif)
 
 #---ALPHA-DIVERSITY ANALYSES---
 
@@ -50,12 +51,12 @@ names(tse.list) <- c("PYM")
 df_alpha <- as.data.frame(colData(tse.list$PYM)) %>%
     select(chao1, shannon, simpson, HPF_group)
 counter <<- 0
-graphs_alpha <-lapply(df_alpha[ ,c("chao1", "shannon", "simpson")], 
+graphs_alpha <- lapply(df_alpha[ ,c("chao1", "shannon", "simpson")], 
                       function(a) 
                       {counter <<- counter + 1
                       ggplot(df_alpha, aes(x = HPF_group, y = a)) +
                           geom_boxplot(aes(fill = HPF_group), 
-                                       alpha=.5,
+                                       alpha = .5,
                                        outlier.shape = NA) +
                           geom_signif(comparisons = list(c("Low_HPF_consumption", "High_HPF_consumption")),
                                       test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
@@ -94,13 +95,13 @@ tse.list_hei <- lapply(names(tse.list_hei), function(x){
 })
 names(tse.list_hei) <- c("PYM")
 df_hei <- as.data.frame(colData(tse.list_hei$PYM)) %>%
-    select(chao1, shannon, simpson, Grupo_HEI)
+    select(chao1, shannon, simpson, HEI_group)
 counter <<- 0
 graphs_hei <-lapply(df_hei[ ,c("chao1", "shannon", "simpson")], 
                     function(a) 
                     {counter <<- counter + 1
-                    ggplot(df_hei, aes(x = Grupo_HEI, y = a)) +
-                        geom_boxplot(aes(fill = Grupo_HEI), 
+                    ggplot(df_hei, aes(x = HEI_group, y = a)) +
+                        geom_boxplot(aes(fill = HEI_group), 
                                      alpha=.5,
                                      outlier.shape = NA) +
                         scale_fill_brewer(palette="Paired") +
@@ -108,7 +109,7 @@ graphs_hei <-lapply(df_hei[ ,c("chao1", "shannon", "simpson")],
                         geom_signif(comparisons = list(c("Good_HEI", "Poor_HEI")),
                                     test = "wilcox.test", map_signif_level = TRUE, textsize = 3, fontface = "bold") +
                         geom_jitter(width = 0.2,
-                                    aes(colour = Grupo_HEI), size = 1.5) +
+                                    aes(colour = HEI_group), size = 1.5) +
                         ylab(gsub('_', ' ', colnames(df_hei)[counter])) + xlab(NULL) + theme_bw() + theme(axis.title.y = element_text(size=12, face="bold.italic", colour = "black"), axis.text.x = element_text(size=9, face="bold", colour = "black"), axis.text.y = element_text(size=9, face="bold", colour = "black"), legend.title=element_blank(), legend.text = element_text(face = "bold"))})
 ggarrange(plotlist = graphs_hei,
           common.legend = TRUE, legend = "bottom",
@@ -173,7 +174,8 @@ add_significance()
 
 # Study cohort: HPF classification -----
 
-## Auxiliar functions
+## Auxiliary functions
+
 ### Calculates distances
 distances <- function(study_pseq) {
     for( i in dist_methods ){
@@ -272,7 +274,7 @@ adonis_calculator <- function(dlist, study_pseq) {
     
     results.group <- lapply(names(dlist), 
                             function(x) {
-                                z <- adonis(dlist[[x]] ~ Grupo_HEI, 
+                                z <- adonis(dlist[[x]] ~ HEI_group, 
                                             data = data.frame(sample_data(study_pseq)))
                                 return(as.data.frame(z$aov.tab))
                             })
@@ -286,9 +288,9 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
         p <- NULL
         
         p <- plot_ordination(study_pseq, pcoa_list[[i]], 
-                             color = "Grupo_HEI") +
+                             color = "HEI_group") +
             geom_point(size = 2) +
-            stat_ellipse(aes(group = Grupo_HEI), linetype = 2) +
+            stat_ellipse(aes(group = HEI_group), linetype = 2) +
             theme_bw() +
             theme(plot.title = element_text(face = 'bold', size = 16),
                   axis.title = element_text(size = 14),
@@ -297,7 +299,7 @@ plotter_beta <- function(dist_methods, study_pseq, pcoa_list){
                   legend.text = element_text(size = 12, face = "bold"))
         
         p <- p + ggtitle(i) 
-        p <- p + scale_colour_brewer(type="qual", palette="Paired")
+        p <- p + scale_colour_brewer(type = "qual", palette = "Paired")
         
         plist[[i]] <- p
     }

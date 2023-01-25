@@ -135,7 +135,9 @@ df2 <- df2[-tail(seq_len(nrow(df2)), 3), , drop = FALSE]
 final_df <- cbind(df2, df1)
 
 # We then add a final column indicating the HEI group each sample from the
-# validation cohort belongs to
+# validation cohort belongs to.
+# Please note: the content of this variable called "final_df" is the same
+# as the one from the file found at DATA/test_data_for_validation.csv
 final_df$HEI_group <- abundances_val_clr_hei$HEI_group
 
 # We then calculate the area under the curve

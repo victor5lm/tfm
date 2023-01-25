@@ -104,6 +104,9 @@ if (!require("mikropml")) {
     # Selection of the most precise model based on its accuracy
     get_best_model(originals_caret_hei) #mtry = 64; ntree = 88
 
+    # Feature importances
+    varImp(get_best_model(originals_caret_hei), scale = FALSE)
+
 ## Stochastic Gradient Boosting -----
 
     #Hyperparameter tuning:
@@ -128,6 +131,9 @@ if (!require("mikropml")) {
                     tuneGrid = gbmGrid,
                     trControl = fitControl_gbm,
                     bag.fraction = 0.7)
+
+    # Feature importances
+    varImp(fit_gbm_hei$finalModel, scale = FALSE)
 
 ## RBF-Kernel SVC -----
 
@@ -156,60 +162,72 @@ if (!require("mikropml")) {
                 trControl = fitControl_svm,
                 tuneGrid = svm_grid)
 
+    # Feature importances
+    varImp(svm_model_hei$finalModel, scale = FALSE)
+
 ## MIKROPML-BASED CLASSIFIERS -----
 
 ## Random Forest -----
 
-ntrees <- seq(1, 100)
-tuning_rf <- list(mtry = seq(1, 200))
-originals_mikropml <- list()
+    ntrees <- seq(1, 100)
+    tuning_rf <- list(mtry = seq(1, 200))
+    originals_mikropml <- list()
 
-for (ntree in ntrees) {
-    print(ntree)
-    set.seed(2019)
-    results_rf <- run_ml(data_ml.uncor_mikropml, "rf",
-    outcome_colname = 'HEI_group',
-    cross_val = caret::trainControl(method = "LOOCV"),
-    training_frac = 0.80, seed = 2019,
-    calculate_performance = TRUE, ntree = ntree,
-    hyperparameters = tuning_rf,
-    find_feature_importance = TRUE)
-    key <- toString(ntree)
-    originals_mikropml[[key]] <- results_rf
-}
+    for (ntree in ntrees) {
+        print(ntree)
+        set.seed(2019)
+        results_rf <- run_ml(data_ml.uncor_mikropml, "rf",
+        outcome_colname = 'HEI_group',
+        cross_val = caret::trainControl(method = "LOOCV"),
+        training_frac = 0.80, seed = 2019,
+        calculate_performance = TRUE, ntree = ntree,
+        hyperparameters = tuning_rf,
+        find_feature_importance = TRUE)
+        key <- toString(ntree)
+        originals_mikropml[[key]] <- results_rf
+    }
 
-originals_mikropml$`88`$performance$AUC
-# 0.8833333
+    originals_mikropml$`88`$performance$AUC
+    # 0.8833333
+
+    # Feature importances
+    varImp(originals_mikropml$`88`$trained_model, scale = FALSE)
 
 ## Extreme Gradient Boosting -----
 
-tuning_xgbtree <- list(nrounds = seq(1, 25),
-                      max_depth = seq(1, 25),
-                      colsample_bytree = seq(0.1, 0.9, by = 0.1),
-                      eta = 0.1,
-                      gamma = 0,
-                      min_child_weight = seq(1, 5),
-                      subsample = seq(0.1, 0.7, by = 0.1))
+    tuning_xgbtree <- list(nrounds = seq(1, 25),
+                        max_depth = seq(1, 25),
+                        colsample_bytree = seq(0.1, 0.9, by = 0.1),
+                        eta = 0.1,
+                        gamma = 0,
+                        min_child_weight = seq(1, 5),
+                        subsample = seq(0.1, 0.7, by = 0.1))
 
-set.seed(2019)
-results_xgbtree_hei <- run_ml(data_ml.uncor_mikropml, "xgbTree",
-outcome_colname = 'HEI_group',
-cross_val = caret::trainControl(method = "LOOCV"),
-training_frac = 0.80, seed = 2019,
-calculate_performance = TRUE,
-hyperparameters = tuning_xgbtree,
-find_feature_importance = TRUE)
+    set.seed(2019)
+    results_xgbtree_hei <- run_ml(data_ml.uncor_mikropml, "xgbTree",
+    outcome_colname = 'HEI_group',
+    cross_val = caret::trainControl(method = "LOOCV"),
+    training_frac = 0.80, seed = 2019,
+    calculate_performance = TRUE,
+    hyperparameters = tuning_xgbtree,
+    find_feature_importance = TRUE)
+
+    # Feature importances
+    varImp(results_xgbtree_hei$finalModel, scale = FALSE)
 
 ## RBF-Kernel SVC -----
 
-tuning_svm <- list(sigma = kernelf(svm)@kpar$sigma, C = seq(0.0001, 0.1, by = 0.0001))
+    tuning_svm <- list(sigma = kernelf(svm)@kpar$sigma, C = seq(0.0001, 0.1, by = 0.0001))
 
-set.seed(2019)
-results_svm_hei <- run_ml(data_ml.uncor_mikropml, "svmRadial",
-                     outcome_colname = 'HEI_group',
-                     cv_times = 1,
-                     kfold = 37,
-                     training_frac = 0.8, seed = 2019,
-                     calculate_performance = TRUE,
-                     hyperparameters = tuning_svm,
-                     find_feature_importance = TRUE)
+    set.seed(2019)
+    results_svm_hei <- run_ml(data_ml.uncor_mikropml, "svmRadial",
+                        outcome_colname = 'HEI_group',
+                        cv_times = 1,
+                        kfold = 48, # 80% of the total number of samples from the study cohort
+                        training_frac = 0.8, seed = 2019,
+                        calculate_performance = TRUE,
+                        hyperparameters = tuning_svm,
+                        find_feature_importance = TRUE)
+
+    # Feature importances
+    varImp(results_svm_hei$finalModel, scale = FALSE)

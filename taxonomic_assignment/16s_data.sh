@@ -1,9 +1,7 @@
 # Commands for the processing and taxonomic assignment of 16S rRNA data (study cohort) -----
 
-# First, we create a conda environment to use QIIME2
-conda create --name qiime2-2022.2
-
-# Second, we need to download the most recent version of QIIME2 -----
+# First, we need to download the most recent version of QIIME2
+# and create a conda environment -----
     wget https://data.qiime2.org/distro/core/qiime2-2022.2-py38-linux-conda.yml
     conda env create -n qiime2-2022.2 --file qiime2-2022.2-py38-linux-conda.yml
 
@@ -47,7 +45,9 @@ conda create --name qiime2-2022.2
         close OUT;
 
 # Now, we execute the new script to create this file, called "data.csv"
-# with the aforementioned info
+# with the aforementioned info. Please note, this file will not be
+# available in this repository since the information it contains
+# is not relevant.
     perl script.pl *.fq.gz
 
 # Before calling QIIME2, we need to add the following header to data.csv:
@@ -67,7 +67,7 @@ conda create --name qiime2-2022.2
     --o-visualization demux.qzv
 
 # Next, we carry out the quality filtering procedure with DADA2. 
-# No additional reads will be removed since the original raw-reads
+# No additional reads will be removed since the original raw reads
 # already had a good quality
 
 qiime dada2 denoise-paired \
@@ -80,7 +80,7 @@ qiime dada2 denoise-paired \
   --o-representative-sequences rep-seqs.qza \ # Identified features and their sequence
   --o-denoising-stats denoising-stats.qza # Statistics regarding the filtering processes
 
-# We can then transform these .qza artifacts to visualisation files (.qzv) in case we are interested in viewing their content
+# We can then transform these .qza artefacts to visualisation files (.qzv) in case we are interested in viewing their content
 qiime feature-table tabulate-seqs \
   --i-data rep-seqs.qza \
   --o-visualization rep-seqs.qzv

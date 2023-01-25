@@ -1,5 +1,7 @@
-# Scripts for the generation of the most accurate ML classifier for the HPF classification of the Study cohort:
+# Script for the generation of the most accurate ML classifier
+# for the HEI classification of the study cohort:
 
+# First, we need to import all necessary libraries:
 library(ComplexHeatmap)
 library(ggplot2)
 library(dplyr)
@@ -13,14 +15,14 @@ library(tidyverse)
 library(purrr)
 library(mikropml)
 
-#Classifier construction
+# Classifier construction:
 library(caret)
 library(pROC)
 library(ggpubr)
 library(tidyverse)
 library(viridis)
 
-if( !require("mikropml") ){
+if( !require("mikropml") ) {
     install.packages("mikropml")
     library(mikropml)
 }
@@ -32,7 +34,7 @@ highCorr <- findCorrelation(descrCorr, 0.90)
 data_rf.uncor <- data_complete_hei_groups_rf[, -highCorr]
 
 ntrees <- seq(1, 100)
-tuning_rf <- list(mtry = seq(1, 100))
+tuning_rf <- list(mtry = seq(1, 200))
 originals_hei_rf <- list()
 
 for (ntree in ntrees){print(ntree)
@@ -52,7 +54,7 @@ for (ntree in ntrees){print(ntree)
 originals_hei_rf$"88"$performance #AUC = 0.85
 
 #Variable importances
-imp.bi <- varImp(originals_hei_rf$"88", scale = FALSE)
+imp.bi_hei <- varImp(originals_hei_rf$"88", scale = FALSE)
 
 #Heatmap with the 20 most important features according to this ML classifier and based on the HEI classification of the Study cohort
 table_imp_mikropml_rf <- read.csv("DATA/importances_HEI/imp_mikropml_rf_hei.csv")

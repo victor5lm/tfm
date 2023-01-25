@@ -1,5 +1,7 @@
-# Scripts for the generation of the most accurate ML classifier for the HPF classification of the Study cohort:
+# Script for the generation of the most accurate ML classifier
+# for the HPF classification of the study cohort:
 
+# First, we need to import all necessary libraries:
 library(ComplexHeatmap)
 library(ggplot2)
 library(dplyr)
@@ -13,8 +15,7 @@ library(tidyverse)
 library(purrr)
 library(mikropml)
 
-# Classifier construction
-
+# Classifier construction:
 library(caret)
 library(pROC)
 library(ggpubr)
@@ -58,7 +59,10 @@ originals$`17`$performance$AUC #0.88333
 # Feature importances
 imp.bi <- varImp(originals$`17`$trained_model, scale = FALSE)
 
-# Heatmap for the 20 most important microbial taxa identified by the best ML model trained after the HPF classification of the study cohort
+# ------
+
+# Heatmap for the 20 most important microbial taxa identified
+# by the best ML model trained after the HPF classification of the study cohort
 a <- imp.bi$importance %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
