@@ -76,5 +76,5 @@ The `R_scripts` directory contains:
 
 The `taxonomic_assignment` directory contains:
 - `16s_data.sh`: bash script used for the processing of raw reads using QIIME2 and their taxonomic assignment, until obtaining all necessary files for the generation of phyloseq objects that will be needed for ML classifier construction based on HPF consumption and HEI.
-- `wgs_data.sh`: bash script used for the processing of raw reads using metaWRAP and MetaPhlAn4 and their taxonomic assignment, until obtaining the relative abundances table necessary for the generation of phyloseq objects that will be needed for ML validation.
+- `wgs_data.sh`: bash script used for the processing of raw reads using metaWRAP and MetaPhlAn4 and their taxonomic assignment, until obtaining the relative abundances table necessary for the generation of phyloseq objects that will be needed for diversity analyses, DAA and ML validation.
 
